@@ -1,15 +1,62 @@
-import React from 'react';
+/** @jsxImportSource theme-ui */
 
 function Register() {
   return (
-    <>
-      {/* name */}
-      {/* email */}
-      {/* password */}
-      {/* confirm password */}
-      {/* register */}
-      <div className=''>Hello from register</div>
-    </>
+    <div className='form'>
+      <form
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          flexDirection: 'column',
+          bg: 'white',
+        }}
+        action='submit'
+        // onSubmit={}
+      >
+        <h1>Register Here</h1>
+        <label htmlFor='name'>Name</label>
+        <input
+          type='text'
+          name='name'
+          id='name'
+          // value={}
+          // onChange={}
+          placeholder='John Doe'
+          required
+        />
+        <label htmlFor='email'>Email</label>
+        <input
+          type='email'
+          name='email'
+          id='name'
+          // value={}
+          // onChange={}
+          placeholder='jdoe@gmail.com'
+          required
+        />
+        <label htmlFor='password'>Password</label>
+        <input
+          type='password'
+          name='password'
+          id='password'
+          // value={}
+          // onChange={}
+          required
+        />
+        <label htmlFor='confirmPassword'>Confirm Password</label>
+        <input
+          type='password'
+          name='confirmPassword'
+          id='confirmPassword'
+          // value={}
+          // onChange={}
+          required
+        />
+        <div sx={{ paddingTop: '0.5rem' }}>
+          <button type='submit'>Register</button>
+        </div>
+      </form>
+    </div>
   );
 }
 
