@@ -38,7 +38,7 @@ function Register() {
     } else {
       const { accessToken } = res;
       localStorage.setItem('accessToken', accessToken);
-      dispatch(login({ name, email }));
+      dispatch(login({ email }));
       // redirect to dashboard
       router.push('/dashboard');
       // auth.login(() => props.history.push('/profile'));
