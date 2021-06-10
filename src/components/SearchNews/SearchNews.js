@@ -36,7 +36,7 @@ function SearchNews() {
             display: 'flex',
 
             alignItems: 'center',
-            height: '3.5rem',
+            height: '2rem',
           }}
         >
           <div sx={{ flex: 2 }}>
@@ -66,7 +66,7 @@ function SearchNews() {
         <Divider />
         <div
           sx={{
-            height: '40vh',
+            height: '82vh',
             padding: '1rem',
             overflowY: 'scroll',
             scrollbarWidth: 'none',
@@ -74,7 +74,11 @@ function SearchNews() {
         >
           <div sx={{}}>
             {searchedNews || mockNews.articles ? (
-              <NewsList news={searchedNews || mockNews.articles} />
+              <NewsList
+                news={searchedNews || mockNews.articles}
+                RecentViews={false}
+                SearchNews={true}
+              />
             ) : (
               <p>No search results</p>
             )}

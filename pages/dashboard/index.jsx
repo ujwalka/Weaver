@@ -28,17 +28,15 @@ function Dashboard() {
       {isAuthenticated ? (
         <>
           <DashNav />
-          <div sx={{ display: 'flex', flexDirection: 'column' }}>
-            <div sx={{ display: 'flex' }}>
-              <div sx={{ flex: 2 }}>
-                <SearchNews />
-              </div>
-              <div sx={{ flex: 1 }}>
-                <TopNews />
-              </div>
+          <div sx={{ display: 'flex' }}>
+            <div sx={{ flex: 1.5 }}>
+              <SearchNews />
             </div>
-            <div>
-              <RecentlyViewed />
+            <div sx={{ flex: 1 }}>
+              <div sx={{ display: 'flex', flexDirection: 'column' }}>
+                <TopNews />
+                <RecentlyViewed />
+              </div>
             </div>
           </div>
         </>

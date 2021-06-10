@@ -13,16 +13,16 @@ function TopNews() {
   );
   return (
     <>
-      <div sx={{ padding: '1rem' }}>
+      <div sx={{ padding: '1rem', pt: 0, mt: 0 }}>
         <div
           sx={{
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            height: '3.5rem',
+            height: '3rem',
           }}
         >
-          <h2 sx={{ paddingBottom: '2rem' }}>Top News</h2>
+          <h2>Top News</h2>
         </div>
         <Divider />
 
@@ -32,12 +32,16 @@ function TopNews() {
             flexDirection: 'column',
             overflowY: 'scroll',
             scrollbarWidth: 'none',
-            height: '40vh',
+            height: '45vh',
             padding: '1rem',
           }}
         >
           {topNews || mockNews.articles ? (
-            <NewsList news={mockNews.articles || topNews} />
+            <NewsList
+              news={mockNews.articles || topNews}
+              RecentViews={false}
+              SearchNews={false}
+            />
           ) : (
             <div sx={{ justifyContent: 'space-around' }}>
               <Spinner />

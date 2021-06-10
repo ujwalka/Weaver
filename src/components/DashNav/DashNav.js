@@ -23,14 +23,15 @@ function DashNav() {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
+        height: '3rem',
       }}
     >
       <h1>
         <b>Weaver</b>
       </h1>
 
-      <Button mr={3} onClick={handleClick}>
-        Logout
+      <Button sx={{ mr: 3, color: 'white', bg: 'black' }} onClick={handleClick}>
+        <b>Logout</b>
       </Button>
     </div>
   );
