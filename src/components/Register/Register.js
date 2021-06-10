@@ -1,8 +1,15 @@
 /** @jsxImportSource theme-ui */
 
+import { Link } from '@theme-ui/components';
+
 function Register() {
   return (
     <div className='form'>
+      <Link href='/'>
+        <a>
+          <h4>back to login</h4>
+        </a>
+      </Link>
       <form
         sx={{
           display: 'flex',

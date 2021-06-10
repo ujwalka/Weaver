@@ -1,5 +1,7 @@
 /** @jsxImportSource theme-ui */
 
+import { Link } from '@theme-ui/components';
+
 function Login() {
   return (
     <div className='form'>
@@ -34,9 +36,14 @@ function Login() {
           // onChange={}
           required
         />
+        <Link href='/register'>
+          <a>
+            <h4>Register here</h4>
+          </a>
+        </Link>
 
         <div sx={{ paddingTop: '0.5rem' }}>
-          <button type='submit'>Register</button>
+          <button type='submit'>Login</button>
         </div>
       </form>
     </div>
