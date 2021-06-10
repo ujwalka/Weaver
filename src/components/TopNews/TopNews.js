@@ -1,6 +1,10 @@
+/** @jsxImportSource theme-ui */
+
+import { Divider, Spinner } from '@theme-ui/components';
 import React, { useEffect, useState } from 'react';
 import useFetchNews from '../../../hooks/useFetchNews';
 import NewsCard from '../NewsCard/NewsCard';
+import NewsList from '../NewsList/NewsList';
 
 function TopNews() {
   const topNews = useFetchNews(
@@ -9,16 +13,38 @@ function TopNews() {
 
   return (
     <>
-      <h1>Top News</h1>
-      {topNews ? (
-        <div>
-          {topNews.map((news) => (
-            <NewsCard news={news} />
-          ))}
+      <div sx={{ padding: '1rem' }}>
+        <div
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            height: '3.5rem',
+          }}
+        >
+          <h2 sx={{ paddingBottom: '2rem' }}>Top News</h2>
         </div>
-      ) : (
-        <p>loading...</p>
-      )}
+        <Divider />
+
+        <div
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            overflowY: 'scroll',
+            scrollbarWidth: 'none',
+            height: '40vh',
+            padding: '1rem',
+          }}
+        >
+          {topNews ? (
+            <NewsList news={topNews} />
+          ) : (
+            <div sx={{ justifyContent: 'space-around' }}>
+              <Spinner />
+            </div>
+          )}
+        </div>
+      </div>
     </>
   );
 }

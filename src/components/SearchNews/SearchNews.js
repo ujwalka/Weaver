@@ -1,7 +1,8 @@
 /** @jsxImportSource theme-ui */
 
 import React, { useState } from 'react';
-import NewsCard from '../NewsCard/NewsCard';
+import NewsList from '../NewsList/NewsList';
+import { Button, Divider } from 'theme-ui';
 
 const initialState = '';
 
@@ -26,26 +27,60 @@ function SearchNews() {
     setSearchedNews(newsArticles.articles);
   }
   return (
-    <div sx={{ overflow: 'scroll' }}>
-      <h1>Search News</h1>
-      <form action='submit' onSubmit={handleSubmit}>
-        <input
-          type='text'
-          name='search'
-          id='search'
-          value={search}
-          onChange={handleChange}
-          placeholder='Search news'
-          required
-        />
-        <button type='submit'>search</button>
-      </form>
-      {searchedNews ? (
-        searchedNews.map((news) => <NewsCard news={news} />)
-      ) : (
-        <p>No news found in your area</p>
-      )}
-    </div>
+    <>
+      <div sx={{ padding: '1rem' }}>
+        <div
+          sx={{
+            justifyContent: 'space-between',
+            display: 'flex',
+
+            alignItems: 'center',
+            height: '3.5rem',
+          }}
+        >
+          <div sx={{ flex: 2 }}>
+            <h2>Search</h2>
+          </div>
+          <div sx={{ flex: 4 }}>
+            <form action='submit' onSubmit={handleSubmit}>
+              <input
+                type='text'
+                name='search'
+                id='search'
+                value={search}
+                onChange={handleChange}
+                placeholder='Search news'
+                required
+                sx={{
+                  height: '2.5rem',
+                  width: '80%',
+                }}
+              />
+              <Button sx={{ bg: 'black', height: '2.5rem' }} type='submit'>
+                search
+              </Button>
+            </form>
+          </div>
+        </div>
+        <Divider />
+        <div
+          sx={{
+            height: '40vh',
+            padding: '1rem',
+            overflowY: 'scroll',
+            scrollbarWidth: 'none',
+          }}
+        >
+          <div sx={{}}>
+            {searchedNews ? (
+              <NewsList news={searchedNews} />
+            ) : (
+              <p>No search results</p>
+            )}
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 

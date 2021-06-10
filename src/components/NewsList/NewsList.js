@@ -1,10 +1,14 @@
 import React from 'react';
+import NewsCard from '../NewsCard/NewsCard';
 
-function NewsList() {
+function NewsList({ news }) {
   return (
     <div>
-      {/* get all news for search input */}
-      Hello from news list
+      <div>
+        {news.map((article) => (
+          <NewsCard news={article} />
+        ))}
+      </div>
     </div>
   );
 }
