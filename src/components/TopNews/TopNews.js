@@ -9,6 +9,7 @@ function TopNews() {
 
   return (
     <>
+      <h1>Top News</h1>
       {topNews ? (
         <div>
           {topNews.map((news) => (
