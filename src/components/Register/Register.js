@@ -1,8 +1,54 @@
 /** @jsxImportSource theme-ui */
 
 import { Link } from '@theme-ui/components';
+import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useRouter } from 'next/router';
+import authenticationApi from '../../apiServices/authenticationApi';
+import login from '../../../redux/actionCreators/login';
+
+const initialState = {
+  name: '',
+  email: '',
+  password: '',
+  confirmPassword: '',
+};
 
 function Register() {
+  const [state, setState] = useState(initialState);
+  const router = useRouter();
+  const dispatch = useDispatch();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setState((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const { email, password, name } = state;
+    const user = { email, password, name };
+    const res = await authenticationApi.register(user);
+    if (res.error) {
+      alert(`${res.message}`);
+      setState(initialState);
+    } else {
+      const { accessToken } = res;
+      localStorage.setItem('accessToken', accessToken);
+      dispatch(login({ name, email }));
+      // redirect to dashboard
+      router.push('/dashboard');
+      // auth.login(() => props.history.push('/profile'));
+    }
+  };
+
+  const validateForm = () => {
+    return state.confirmPassword !== state.password;
+  };
+
   return (
     <div className='form'>
       <Link href='/'>
@@ -18,7 +64,7 @@ function Register() {
           bg: 'white',
         }}
         action='submit'
-        // onSubmit={}
+        onSubmit={handleSubmit}
       >
         <h1>Register Here</h1>
         <label htmlFor='name'>Name</label>
@@ -26,8 +72,8 @@ function Register() {
           type='text'
           name='name'
           id='name'
-          // value={}
-          // onChange={}
+          value={state.name}
+          onChange={handleChange}
           placeholder='John Doe'
           required
         />
@@ -36,8 +82,8 @@ function Register() {
           type='email'
           name='email'
           id='name'
-          // value={}
-          // onChange={}
+          value={state.email}
+          onChange={handleChange}
           placeholder='jdoe@gmail.com'
           required
         />
@@ -46,8 +92,8 @@ function Register() {
           type='password'
           name='password'
           id='password'
-          // value={}
-          // onChange={}
+          value={state.password}
+          onChange={handleChange}
           required
         />
         <label htmlFor='confirmPassword'>Confirm Password</label>
@@ -55,12 +101,14 @@ function Register() {
           type='password'
           name='confirmPassword'
           id='confirmPassword'
-          // value={}
-          // onChange={}
+          value={state.confirmPassword}
+          onChange={handleChange}
           required
         />
         <div sx={{ paddingTop: '0.5rem' }}>
-          <button type='submit'>Register</button>
+          <button type='submit' disabled={validateForm()}>
+            Register
+          </button>
         </div>
       </form>
     </div>
