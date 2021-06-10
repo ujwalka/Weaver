@@ -5,12 +5,12 @@ import React, { useEffect, useState } from 'react';
 import useFetchNews from '../../../hooks/useFetchNews';
 import NewsCard from '../NewsCard/NewsCard';
 import NewsList from '../NewsList/NewsList';
+import { mockNews } from '../../../mockNews';
 
 function TopNews() {
   const topNews = useFetchNews(
     'https://newsapi.org/v2/top-headlines?country=us&apiKey=de672c5dc9894971ba8967feb68e7431'
   );
-
   return (
     <>
       <div sx={{ padding: '1rem' }}>
@@ -36,8 +36,8 @@ function TopNews() {
             padding: '1rem',
           }}
         >
-          {topNews ? (
-            <NewsList news={topNews} />
+          {topNews || mockNews.articles ? (
+            <NewsList news={mockNews.articles || topNews} />
           ) : (
             <div sx={{ justifyContent: 'space-around' }}>
               <Spinner />

@@ -2,6 +2,7 @@
 
 import { Divider, Spinner } from '@theme-ui/components';
 import React from 'react';
+import { mockNews } from '../../../mockNews';
 import NewsList from '../NewsList/NewsList';
 
 function RecentlyViewed() {
@@ -19,7 +20,11 @@ function RecentlyViewed() {
           padding: '1rem',
         }}
       >
-        {recentlySearched ? <NewsList news={recentlySearched} /> : <Spinner />}
+        {recentlySearched || mockNews.articles ? (
+          <NewsList news={recentlySearched || mockNews.articles} />
+        ) : (
+          <Spinner />
+        )}
       </div>
     </>
   );

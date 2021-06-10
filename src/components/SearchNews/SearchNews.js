@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import NewsList from '../NewsList/NewsList';
 import { Button, Divider } from 'theme-ui';
+import { mockNews } from '../../../mockNews';
 
 const initialState = '';
 
@@ -72,8 +73,8 @@ function SearchNews() {
           }}
         >
           <div sx={{}}>
-            {searchedNews ? (
-              <NewsList news={searchedNews} />
+            {searchedNews || mockNews.articles ? (
+              <NewsList news={searchedNews || mockNews.articles} />
             ) : (
               <p>No search results</p>
             )}
