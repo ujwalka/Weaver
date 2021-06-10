@@ -4,6 +4,7 @@ import React from 'react';
 import SearchNews from '../../src/components/SearchNews/SearchNews';
 import TopNews from '../../src/components/TopNews/TopNews';
 import RecentlyViewed from '../../src/components/RecentlyViewed/RecentlyViewed';
+import DashNav from '../../src/components/DashNav/DashNav';
 
 function Dashboard() {
   return (
@@ -11,6 +12,7 @@ function Dashboard() {
       {/* navbar */}
       {/* sort by */}
       {/* news results */}
+      <DashNav />
       <div sx={{ display: 'flex' }}>
         <div sx={{ flex: 2 }}>
           <SearchNews />
