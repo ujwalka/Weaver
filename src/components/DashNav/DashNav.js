@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import authenticationApi from '../../apiServices/authenticationApi';
 import logout from '../../../redux/actionCreators/logout';
 import { useDispatch } from 'react-redux';
+import { Button } from 'theme-ui';
 
 function DashNav() {
   const dispatch = useDispatch();
@@ -28,7 +29,9 @@ function DashNav() {
         <b>Weaver</b>
       </h1>
 
-      <button onClick={handleClick}>Logout</button>
+      <Button mr={3} onClick={handleClick}>
+        Logout
+      </Button>
     </div>
   );
 }
