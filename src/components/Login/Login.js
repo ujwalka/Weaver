@@ -38,7 +38,6 @@ function Login() {
       const { accessToken } = res;
       localStorage.setItem('accessToken', accessToken);
       dispatch(login({ email }));
-      router.push('/dashboard');
     }
   };
 
