@@ -1,10 +1,10 @@
 import React from 'react';
 
-function NestCard() {
+function NestCard({ nest }) {
   return (
     <div>
       {/* strawlist */}
-      Hello from NestCard
+      {nest.description}
     </div>
   );
 }

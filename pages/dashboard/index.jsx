@@ -23,12 +23,9 @@ function Dashboard() {
     const token = localStorage.getItem('accessToken');
     (async () => {
       if (token) {
-        console.log('token', token);
         // @ts-ignore
         const isValid = await authenticationApi.validateToken({ token });
-        console.log(isValid, 'Is Valid');
         if (isValid) {
-          console.log('IsValid');
           dispatch(setIsAuthenticated());
         } else {
           router.push('/');

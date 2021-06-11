@@ -37,6 +37,7 @@ function Login() {
     } else {
       const { accessToken } = res;
       localStorage.setItem('accessToken', accessToken);
+      localStorage.setItem('email', email);
       dispatch(login({ email }));
       router.push('/dashboard');
     }

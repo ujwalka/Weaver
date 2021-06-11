@@ -1,23 +1,48 @@
 /** @jsxImportSource theme-ui */
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Spinner } from '@theme-ui/components';
 import { Button, Divider } from 'theme-ui';
-
+import nestApi from '../../apiServices/nestApi';
+import authenticationApi from '../../apiServices/authenticationApi';
+import { useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
+import NestCard from '../NestCard/NestCard';
 function NestList() {
   const [description, setDescription] = useState('');
   const [nests, setNests] = useState(null);
-  // fetch nests from db
-  // add nests to db
-  const handleSubmit = (e) => {
+  const [userId, setUserId] = useState('');
+  const router = useRouter();
+  useEffect(() => {
+    const email = localStorage.getItem('email');
+    (async () => {
+      if (email) {
+        // @ts-ignore
+        const { userId } = await authenticationApi.getUser({ email });
+        setUserId(userId);
+        const { nest } = await nestApi.getAllNests(userId);
+        setNests(nest);
+      } else {
+        router.push('/');
+      }
+    })();
+  }, [userId]);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // post nest
-    // get nest list
-    // update nest list
+    if (userId) {
+      await nestApi.createNest(description, userId);
+      // get nest list
+      const { nest } = await nestApi.getAllNests(userId);
+      // update nest list
+      setNests(nest);
+    } else {
+      router.push('/');
+    }
   };
   const handleChange = (e) => {
-    const { description } = e.target;
-    setDescription(description);
+    setDescription(e.target.value);
   };
   return (
     <>
@@ -46,6 +71,17 @@ function NestList() {
       </div>
       <Divider />
       {/* list of nests */}
+      <div>
+        {nests ? (
+          nests.map((nest) => (
+            <div>
+              <NestCard nest={nest} />
+            </div>
+          ))
+        ) : (
+          <Spinner />
+        )}
+      </div>
     </>
   );
 }

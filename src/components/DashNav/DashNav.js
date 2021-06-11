@@ -30,14 +30,25 @@ function DashNav() {
         height: '3rem',
       }}
     >
-      <div onClick={() => router.push('/dashboard')}>
+      <div
+        sx={{
+          ml: 3,
+          pointer: 'cursor',
+        }}
+        onClick={() => router.push('/dashboard')}
+      >
         <h1>
           <b>Weaver</b>
         </h1>
       </div>
       <div>
         <Button
-          sx={{ mr: 3, color: 'white', bg: 'black', fontSize: '1.2rem' }}
+          sx={{
+            mr: 3,
+            color: 'white',
+            bg: 'black',
+            fontSize: '1.2rem',
+          }}
           onClick={myBranchHandleClick}
         >
           <b>MyBranch</b>

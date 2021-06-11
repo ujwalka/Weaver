@@ -1,6 +1,6 @@
 const authenticationApi = {};
-const BASE_URL = 'https://weaver-cw.herokuapp.com';
-// const BASE_URL = 'http://localhost:5000';
+// const BASE_URL = 'https://weaver-cw.herokuapp.com';
+const BASE_URL = 'http://localhost:5000';
 authenticationApi.register = (user) => {
   return fetch(`${BASE_URL}/register`, {
     method: 'POST',
@@ -40,6 +40,7 @@ authenticationApi.profile = (accessToken) => {
 
 authenticationApi.logout = (tokenName) => {
   localStorage.removeItem(tokenName);
+  localStorage.removeItem('email');
 };
 
 authenticationApi.validateToken = (token) => {
@@ -49,6 +50,22 @@ authenticationApi.validateToken = (token) => {
     mode: 'cors',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(token),
+  })
+    .then((res) => res.json())
+    .catch((err) => console.log(err));
+};
+
+authenticationApi.getUser = (email) => {
+  // {
+  //     "name": "barcelona",
+  //     "userId": "60c23d7a611ac10004761c28"
+  // }
+  return fetch(`${BASE_URL}/user`, {
+    method: 'POST',
+    credentials: 'include',
+    mode: 'cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(email),
   })
     .then((res) => res.json())
     .catch((err) => console.log(err));
