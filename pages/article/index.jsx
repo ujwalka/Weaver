@@ -1,12 +1,12 @@
 import React from 'react';
+import DashNav from '../../src/components/DashNav/DashNav';
 import NewsArticle from '../../src/components/NewsArticle/NewsArticle';
 
 function ArticlePage() {
   return (
     <>
-      {/* nav to dashboard */}
+      <DashNav />
       <NewsArticle />
-      <div className=''>hello from article Page</div>
     </>
   );
 }

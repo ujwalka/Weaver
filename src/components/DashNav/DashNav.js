@@ -26,9 +26,11 @@ function DashNav() {
         height: '3rem',
       }}
     >
-      <h1>
-        <b>Weaver</b>
-      </h1>
+      <div onClick={() => router.push('/dashboard')}>
+        <h1>
+          <b>Weaver</b>
+        </h1>
+      </div>
 
       <Button sx={{ mr: 3, color: 'white', bg: 'black' }} onClick={handleClick}>
         <b>Logout</b>

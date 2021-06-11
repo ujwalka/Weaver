@@ -1,3 +1,5 @@
+/** @jsxImportSource theme-ui */
+
 import React, { useEffect } from 'react';
 import { ThemeProvider } from '@theme-ui/theme-provider';
 import { Provider, useDispatch } from 'react-redux';
