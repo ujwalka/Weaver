@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ThemeProvider } from '@theme-ui/theme-provider';
-import { Provider } from 'react-redux';
+import { Provider, useDispatch } from 'react-redux';
 import theme from '../theme';
 import store from '../redux/store';
 

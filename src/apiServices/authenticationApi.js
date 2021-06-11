@@ -41,4 +41,16 @@ authenticationApi.profile = (accessToken) => {
 authenticationApi.logout = (tokenName) => {
   localStorage.removeItem(tokenName);
 };
+
+authenticationApi.validateToken = (token) => {
+  return fetch(`${BASE_URL}/validateToken`, {
+    method: 'POST',
+    credentials: 'include',
+    mode: 'cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(token),
+  })
+    .then((res) => res.json())
+    .catch((err) => console.log(err));
+};
 export default authenticationApi;

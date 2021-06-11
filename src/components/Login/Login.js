@@ -4,7 +4,7 @@ import { Link } from '@theme-ui/components';
 import authenticationApi from '../../apiServices/authenticationApi';
 import { useDispatch } from 'react-redux';
 import login from '../../../redux/actionCreators/login';
-import { Router, useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 
 const initialState = {
   email: '',
@@ -38,6 +38,7 @@ function Login() {
       const { accessToken } = res;
       localStorage.setItem('accessToken', accessToken);
       dispatch(login({ email }));
+      router.push('/dashboard');
     }
   };
 

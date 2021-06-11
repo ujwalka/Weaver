@@ -8,9 +8,9 @@ import NewsList from '../NewsList/NewsList';
 import { mockNews } from '../../../mockNews';
 
 function TopNews() {
-  const topNews = useFetchNews(
-    'https://newsapi.org/v2/top-headlines?country=us&apiKey=de672c5dc9894971ba8967feb68e7431'
-  );
+  // const topNews = useFetchNews(
+  //   'https://newsapi.org/v2/top-headlines?country=us&apiKey=de672c5dc9894971ba8967feb68e7431'
+  // );
   return (
     <>
       <div sx={{ padding: '1rem', pt: 0, mt: 0 }}>
@@ -36,7 +36,7 @@ function TopNews() {
             padding: '1rem',
           }}
         >
-          {topNews || mockNews.articles ? (
+          {mockNews.articles ? (
             <NewsList
               news={mockNews.articles || topNews}
               RecentViews={false}
