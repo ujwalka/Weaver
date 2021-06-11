@@ -1,19 +1,29 @@
+/** @jsxImportSource theme-ui */
+
 import React from 'react';
 import NestList from '../../src/components/NestList/NestList';
 import SearchNews from '../../src/components/SearchNews/SearchNews';
+import DashNav from '../../src/components/DashNav/DashNav';
 import RecentlyViewed from '../../src/components/RecentlyViewed/RecentlyViewed';
+import { Heading } from 'theme-ui';
 
 function BranchPage() {
   return (
     <>
       {/* navbar to dashboard*/}
       {/* nests */}
-      <NestList />
-      {/* quick search */}
-      <SearchNews />
+      <DashNav />
+      <div sx={{ display: 'flex' }}>
+        <div sx={{ flex: 2 }}>
+          <NestList />
+        </div>
+
+        <div sx={{ flex: 1 }}>
+          {/* quick search */}
+          <SearchNews />
+        </div>
+      </div>
       {/* recent searches */}
-      <RecentlyViewed />
-      <div className=''>hello from branch page</div>
     </>
   );
 }

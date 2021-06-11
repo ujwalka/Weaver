@@ -1,13 +1,13 @@
 import React from 'react';
 
-function Nest() {
+function NestCard() {
   return (
     <div>
       {/* strawlist */}
-      Hello from nest
+      Hello from NestCard
     </div>
   );
 }
 
-export default Nest;
+export default NestCard;
 // strawlist
