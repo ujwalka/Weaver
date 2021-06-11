@@ -32,7 +32,6 @@ function SearchNews() {
       <div sx={{ padding: '1rem' }}>
         <div
           sx={{
-            justifyContent: 'space-betweesn',
             display: 'flex',
             alignItems: 'center',
             height: '2rem',
@@ -51,10 +50,13 @@ function SearchNews() {
                 required
                 sx={{
                   height: '2.5rem',
-                  width: '80%',
+                  width: '90%',
                 }}
               />
-              <Button sx={{ bg: 'black', height: '2.5rem' }} type='submit'>
+              <Button
+                sx={{ bg: 'black', height: '2.5rem', ml: '.5rem' }}
+                type='submit'
+              >
                 search
               </Button>
             </form>
