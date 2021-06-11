@@ -2,6 +2,7 @@ import { Box, Card, Heading, Image, Text } from '@theme-ui/components';
 import React from 'react';
 
 function NewsCard({ news, SearchNews, RecentViews }) {
+  const handleClick = () => {};
   return (
     <>
       <Card

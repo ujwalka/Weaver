@@ -1,13 +1,12 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 function NewsArticle() {
+  // @ts-ignore
+  const { currentArticle } = useSelector((state) => state.newsReducer);
   return (
     <>
-      <div className=''>
-        {/* article */}
-        {/* add to nest drop down */}
-        Hello from news article component
-      </div>
+      <div className=''>{currentArticle.title}</div>
     </>
   );
 }

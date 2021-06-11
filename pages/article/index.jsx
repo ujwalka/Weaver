@@ -6,7 +6,7 @@ function ArticlePage() {
     <>
       {/* nav to dashboard */}
       <NewsArticle />
-      <div className=''>hello from article index</div>
+      <div className=''>hello from article Page</div>
     </>
   );
 }
