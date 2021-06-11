@@ -1,8 +1,4 @@
-// td: move state to a seperate file
-const initialState = {
-  isAuthenticated: false,
-  user: null,
-};
+import { initialState } from './initialState';
 
 const authenticationReducer = (state = initialState, action) => {
   switch (action.type) {
