@@ -32,16 +32,13 @@ function SearchNews() {
       <div sx={{ padding: '1rem' }}>
         <div
           sx={{
-            justifyContent: 'space-between',
+            justifyContent: 'space-betweesn',
             display: 'flex',
-
             alignItems: 'center',
             height: '2rem',
+            mb: '1rem',
           }}
         >
-          <div sx={{ flex: 2 }}>
-            <h2>Search</h2>
-          </div>
           <div sx={{ flex: 4 }}>
             <form action='submit' onSubmit={handleSubmit}>
               <input
@@ -50,7 +47,7 @@ function SearchNews() {
                 id='search'
                 value={search}
                 onChange={handleChange}
-                placeholder='Search news'
+                placeholder='Recent news'
                 required
                 sx={{
                   height: '2.5rem',
@@ -63,7 +60,6 @@ function SearchNews() {
             </form>
           </div>
         </div>
-        <Divider />
         <div
           sx={{
             height: '82vh',
