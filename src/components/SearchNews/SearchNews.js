@@ -50,7 +50,7 @@ function SearchNews() {
                 required
                 sx={{
                   height: '2.5rem',
-                  width: '90%',
+                  width: '75%',
                 }}
               />
               <Button
