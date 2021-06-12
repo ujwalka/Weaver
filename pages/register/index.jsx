@@ -11,6 +11,8 @@ function Page() {
         sx={{
           width: '100vw',
           height: '100vh',
+          bg: 'black',
+          color: 'white',
         }}
       >
         <Register />

@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import NewsList from '../NewsList/NewsList';
 import { Button, Divider } from 'theme-ui';
 import { mockNews } from '../../../mockNews';
+import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 
 const initialState = '';
 
@@ -40,25 +41,27 @@ function SearchNews() {
         >
           <div sx={{ flex: 4 }}>
             <form action='submit' onSubmit={handleSubmit}>
-              <input
-                type='text'
-                name='search'
-                id='search'
-                value={search}
-                onChange={handleChange}
-                placeholder='Recent news'
-                required
-                sx={{
-                  height: '2.5rem',
-                  width: '75%',
-                }}
-              />
-              <Button
-                sx={{ bg: 'black', height: '2.5rem', ml: '.5rem' }}
-                type='submit'
-              >
-                search
-              </Button>
+              <div sx={{ display: 'flex' }}>
+                <input
+                  type='text'
+                  name='search'
+                  id='search'
+                  value={search}
+                  onChange={handleChange}
+                  placeholder='Recent news'
+                  required
+                  sx={{
+                    height: '2.5rem',
+                    width: '75%',
+                  }}
+                />
+                <Button
+                  sx={{ bg: 'black', height: '2.5rem', ml: 2 }}
+                  type='submit'
+                >
+                  <SearchOutlinedIcon />
+                </Button>
+              </div>
             </form>
           </div>
         </div>

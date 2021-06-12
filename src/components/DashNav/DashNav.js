@@ -6,6 +6,7 @@ import authenticationApi from '../../apiServices/authenticationApi';
 import logout from '../../../redux/actionCreators/logout';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button } from 'theme-ui';
+import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
 
 function DashNav() {
   const dispatch = useDispatch();
@@ -38,27 +39,37 @@ function DashNav() {
         }}
         onClick={() => router.push('/dashboard')}
       >
-        <h1>
+        <h1 sx={{ textShadow: '#bfbfbf 1px 0 3px' }}>
           <b>Weaver</b>
         </h1>
       </div>
-      <div>
+      <div sx={{}}>
         <Button
           sx={{
             mr: 3,
             color: 'white',
             bg: 'black',
             fontSize: '1.2rem',
+            cursor: 'pointer',
           }}
           onClick={myBranchHandleClick}
         >
           <b>MyBranch</b>
         </Button>
         <Button
-          sx={{ mr: 3, color: 'white', bg: 'black', fontSize: '1.2rem' }}
+          sx={{
+            mr: 3,
+            color: 'white',
+            bg: 'black',
+            cursor: 'pointer',
+            fontSize: '1.2rem',
+          }}
           onClick={handleClick}
         >
-          <b>Logout</b>
+          <b sx={{ alignItems: 'center', display: 'flex' }}>
+            <div sx={{ mr: 1 }}>Logout</div>
+            <ExitToAppOutlinedIcon />
+          </b>
         </Button>
       </div>
     </div>

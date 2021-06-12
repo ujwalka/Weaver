@@ -53,11 +53,9 @@ function Login() {
       sx={{
         width: '30vw',
         margin: 'auto',
-        mt: '10rem',
-        top: '5rem',
+
         borderRadius: '3',
         borderColor: 'border',
-        boxShadow: '0 8px 16px -4px rgba(0,0,0,.1)',
       }}
     >
       <div
@@ -69,7 +67,7 @@ function Login() {
           padding: 1,
         }}
       >
-        <h1>Weaver</h1>
+        <h1 sx={{ textShadow: '#bfbfbf 1px 0 3px' }}>Weaver</h1>
       </div>
       <Divider />
       <form
@@ -108,7 +106,7 @@ function Login() {
         </div>
         <Text sx={{ padding: 2 }}>
           New to Weaver?{' '}
-          <Link sx={{ color: 'black' }} href='/register'>
+          <Link sx={{ color: 'white' }} href='/register'>
             {' '}
             Sign up
           </Link>
@@ -116,7 +114,12 @@ function Login() {
 
         <div>
           <Button
-            sx={{ paddingTop: '0.5rem', bg: 'black', mb: 2 }}
+            sx={{
+              paddingTop: '0.5rem',
+              bg: 'black',
+              mb: 2,
+              boxShadow: '0 6px 6px -4px rgba(50,50,50,1)',
+            }}
             type='submit'
             disabled={validateForm()}
           >

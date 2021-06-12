@@ -54,11 +54,9 @@ function Register() {
         sx={{
           width: '30vw',
           margin: 'auto',
-          mt: '10rem',
-          top: '5rem',
+
           borderRadius: '3',
           borderColor: 'border',
-          boxShadow: '0 8px 16px -4px rgba(0,0,0,.1)',
         }}
       >
         <div
@@ -78,7 +76,6 @@ function Register() {
             display: 'flex',
             alignItems: 'center',
             flexDirection: 'column',
-            bg: 'white',
           }}
           action='submit'
           onSubmit={handleSubmit}
@@ -113,6 +110,7 @@ function Register() {
               type='password'
               name='password'
               id='password'
+              placeholder='!pas$w0rd12'
               value={state.password}
               onChange={handleChange}
               required
@@ -124,18 +122,24 @@ function Register() {
               type='password'
               name='confirmPassword'
               id='confirmPassword'
+              placeholder='!pas$w0rd12'
               value={state.confirmPassword}
               onChange={handleChange}
               required
             />
           </div>
           <Text sx={{ padding: 2 }}>
-            <Link sx={{ color: 'black' }} href='/'>
+            <Link sx={{ color: 'white' }} href='/'>
               Already a User?
             </Link>
           </Text>
           <Button
-            sx={{ paddingTop: '0.5rem', bg: 'black', mb: 2 }}
+            sx={{
+              paddingTop: '0.5rem',
+              bg: 'black',
+              mb: 2,
+              boxShadow: '0 6px 6px -4px rgba(50,50,50,1)',
+            }}
             type='submit'
             disabled={validateForm()}
           >
