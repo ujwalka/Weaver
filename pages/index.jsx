@@ -14,7 +14,14 @@ import setIsAuthenticated from '../redux/actionCreators/setIsAuthenticated';
 function LoginPage() {
   return (
     <>
-      <Login />
+      <div
+        sx={{
+          width: '100vw',
+          height: '100vh',
+        }}
+      >
+        <Login />
+      </div>
     </>
   );
 }

@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import authenticationApi from '../../apiServices/authenticationApi';
 import login from '../../../redux/actionCreators/login';
+import { Label, Input, Button, Text, Card, Divider } from 'theme-ui';
 
 const initialState = {
   name: '',
@@ -30,7 +31,7 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { email, password, name } = state;
-    const user = { email, password, name };
+    const user = { email, password, name: name.trim() };
     const res = await authenticationApi.register(user);
     if (res.error) {
       alert(`${res.message}`);
@@ -48,68 +49,101 @@ function Register() {
   };
 
   return (
-    <div className='form'>
-      <Link href='/'>
-        <a>
-          <h4>back to login</h4>
-        </a>
-      </Link>
-      <form
+    <>
+      <Card
         sx={{
-          display: 'flex',
-          alignItems: 'center',
-          flexDirection: 'column',
-          bg: 'white',
+          width: '30vw',
+          margin: 'auto',
+          mt: '10rem',
+          top: '5rem',
+          borderRadius: '3',
+          borderColor: 'border',
+          boxShadow: '0 8px 16px -4px rgba(0,0,0,.1)',
         }}
-        action='submit'
-        onSubmit={handleSubmit}
       >
-        <h1>Register Here</h1>
-        <label htmlFor='name'>Name</label>
-        <input
-          type='text'
-          name='name'
-          id='name'
-          value={state.name}
-          onChange={handleChange}
-          placeholder='John Doe'
-          required
-        />
-        <label htmlFor='email'>Email</label>
-        <input
-          type='email'
-          name='email'
-          id='name'
-          value={state.email}
-          onChange={handleChange}
-          placeholder='jdoe@gmail.com'
-          required
-        />
-        <label htmlFor='password'>Password</label>
-        <input
-          type='password'
-          name='password'
-          id='password'
-          value={state.password}
-          onChange={handleChange}
-          required
-        />
-        <label htmlFor='confirmPassword'>Confirm Password</label>
-        <input
-          type='password'
-          name='confirmPassword'
-          id='confirmPassword'
-          value={state.confirmPassword}
-          onChange={handleChange}
-          required
-        />
-        <div sx={{ paddingTop: '0.5rem' }}>
-          <button type='submit' disabled={validateForm()}>
-            Register
-          </button>
+        <div
+          sx={{
+            alignItems: 'center',
+            display: 'flex',
+            height: '4rem',
+            flexDirection: 'column',
+            padding: 1,
+          }}
+        >
+          <h1>Create your Account</h1>
         </div>
-      </form>
-    </div>
+        <Divider />
+        <form
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            flexDirection: 'column',
+            bg: 'white',
+          }}
+          action='submit'
+          onSubmit={handleSubmit}
+        >
+          <div sx={{ mb: 2, width: '70%' }}>
+            <Label htmlFor='name'>Name</Label>
+            <Input
+              type='text'
+              name='name'
+              id='name'
+              value={state.name}
+              onChange={handleChange}
+              placeholder='Finch'
+              required
+            />
+          </div>
+          <div sx={{ mb: 2, width: '70%' }}>
+            <Label htmlFor='email'>Email</Label>
+            <Input
+              type='email'
+              name='email'
+              id='name'
+              value={state.email}
+              onChange={handleChange}
+              placeholder='nest@gmail.com'
+              required
+            />
+          </div>
+          <div sx={{ mb: 2, width: '70%' }}>
+            <Label htmlFor='password'>Password</Label>
+            <Input
+              type='password'
+              name='password'
+              id='password'
+              value={state.password}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div sx={{ mb: 2, width: '70%' }}>
+            <Label htmlFor='confirmPassword'>Confirm Password</Label>
+            <Input
+              type='password'
+              name='confirmPassword'
+              id='confirmPassword'
+              value={state.confirmPassword}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <Text sx={{ padding: 2 }}>
+            <Link sx={{ color: 'black' }} href='/'>
+              Already a User?
+            </Link>
+          </Text>
+          <Button
+            sx={{ paddingTop: '0.5rem', bg: 'black', mb: 2 }}
+            type='submit'
+            disabled={validateForm()}
+          >
+            Sign up
+          </Button>
+        </form>
+      </Card>
+    </>
   );
 }
 

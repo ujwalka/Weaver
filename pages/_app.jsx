@@ -8,7 +8,10 @@ import store from '../redux/store';
 
 export default function MyApp({ Component, pageProps }) {
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider
+      // @ts-ignore
+      theme={theme}
+    >
       <Provider store={store}>
         <Component {...pageProps} />
       </Provider>

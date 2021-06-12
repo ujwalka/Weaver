@@ -5,6 +5,7 @@ import authenticationApi from '../../apiServices/authenticationApi';
 import { useDispatch } from 'react-redux';
 import login from '../../../redux/actionCreators/login';
 import { useRouter } from 'next/router';
+import { Label, Input, Button, Text, Card, Divider } from 'theme-ui';
 
 const initialState = {
   email: '',
@@ -48,51 +49,82 @@ function Login() {
   };
 
   return (
-    <div className='form'>
+    <Card
+      sx={{
+        width: '30vw',
+        margin: 'auto',
+        mt: '10rem',
+        top: '5rem',
+        borderRadius: '3',
+        borderColor: 'border',
+        boxShadow: '0 8px 16px -4px rgba(0,0,0,.1)',
+      }}
+    >
+      <div
+        sx={{
+          alignItems: 'center',
+          display: 'flex',
+          height: '4rem',
+          flexDirection: 'column',
+          padding: 1,
+        }}
+      >
+        <h1>Weaver</h1>
+      </div>
+      <Divider />
       <form
         sx={{
           display: 'flex',
           alignItems: 'center',
           flexDirection: 'column',
-          bg: 'white',
         }}
         action='submit'
         onSubmit={handleSubmit}
       >
-        <h1>Login</h1>
+        <div sx={{ mb: 2, width: '70%' }}>
+          <Label htmlFor='email'>Email</Label>
+          <Input
+            sx={{ outline: 'none' }}
+            type='email'
+            name='email'
+            id='name'
+            value={state.email}
+            onChange={handleChange}
+            placeholder='Email'
+            required
+          />
+        </div>
+        <div sx={{ mb: 2, width: '70%' }}>
+          <Label htmlFor='password'>Password</Label>
+          <Input
+            type='password'
+            name='password'
+            id='password'
+            placeholder='!Pas$w0rd'
+            value={state.password}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <Text sx={{ padding: 2 }}>
+          New to Weaver?{' '}
+          <Link sx={{ color: 'black' }} href='/register'>
+            {' '}
+            Sign up
+          </Link>
+        </Text>
 
-        <label htmlFor='email'>Email</label>
-        <input
-          type='email'
-          name='email'
-          id='name'
-          value={state.email}
-          onChange={handleChange}
-          placeholder='jdoe@gmail.com'
-          required
-        />
-        <label htmlFor='password'>Password</label>
-        <input
-          type='password'
-          name='password'
-          id='password'
-          value={state.password}
-          onChange={handleChange}
-          required
-        />
-        <Link href='/register'>
-          <a>
-            <h4>Register here</h4>
-          </a>
-        </Link>
-
-        <div sx={{ paddingTop: '0.5rem' }}>
-          <button type='submit' disabled={validateForm()}>
+        <div>
+          <Button
+            sx={{ paddingTop: '0.5rem', bg: 'black', mb: 2 }}
+            type='submit'
+            disabled={validateForm()}
+          >
             Login
-          </button>
+          </Button>
         </div>
       </form>
-    </div>
+    </Card>
   );
 }
 
