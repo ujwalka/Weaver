@@ -1,11 +1,13 @@
 import React from 'react';
-import Straw from '../../src/components/Straw/Straw';
+import DashNav from '../../src/components/DashNav/DashNav';
 
 function StrawPage() {
   return (
     <>
       {/* navbar to nest*/}
-      <Straw />
+      <DashNav />
+      {/* article */}
+      {/* notes */}
       <div className=''>Hello from straw page</div>
     </>
   );
