@@ -15,14 +15,16 @@ function NestList() {
   const [description, setDescription] = useState('');
   const [nests, setNests] = useState(null);
   const [userId, setUserId] = useState('');
+  const { user } = useSelector((state) => state.authenticationReducer);
   const router = useRouter();
   const dispatch = useDispatch();
   useEffect(() => {
-    const email = localStorage.getItem('email');
     (async () => {
-      if (email) {
+      if (user.email) {
         // @ts-ignore
-        const { userId } = await authenticationApi.getUser({ email });
+        const { userId } = await authenticationApi.getUser({
+          email: user.email,
+        });
         setUserId(userId);
         const { nest } = await nestApi.getAllNests(userId);
         setNests(nest);

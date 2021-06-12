@@ -4,7 +4,10 @@ import React, { useEffect } from 'react';
 import { ThemeProvider } from '@theme-ui/theme-provider';
 import { Provider, useDispatch } from 'react-redux';
 import theme from '../theme';
-import store from '../redux/store';
+import { PersistGate } from 'redux-persist/integration/react';
+import reduxStore from '../redux/store';
+
+const { store, persistor } = reduxStore();
 
 export default function MyApp({ Component, pageProps }) {
   return (
@@ -13,7 +16,9 @@ export default function MyApp({ Component, pageProps }) {
       theme={theme}
     >
       <Provider store={store}>
-        <Component {...pageProps} />
+        <PersistGate loading={null} persistor={persistor}>
+          <Component {...pageProps} />
+        </PersistGate>
       </Provider>
     </ThemeProvider>
   );

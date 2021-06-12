@@ -7,12 +7,16 @@ import addToCurrentArticle from '../../../redux/actionCreators/addToCurrentArtic
 import NewsCard from '../NewsCard/NewsCard';
 import AddToNest from '../AddToNest/AddToNest';
 import { Card, Flex } from 'theme-ui';
+import addToRecentlyViewed from '../../../redux/actionCreators/addToRecentlyViewed';
 
 function NewsList({ news, RecentViews, SearchNews }) {
   const dispatch = useDispatch();
+  const state = useSelector((state) => state);
+  console.log(state);
   const router = useRouter();
   const handleClick = (article) => {
     dispatch(addToCurrentArticle(article));
+    dispatch(addToRecentlyViewed(article));
     // add to recent news
     // add to nest button
     router.push('/article');

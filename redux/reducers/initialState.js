@@ -3,4 +3,5 @@ export const initialState = {
   user: null,
   currentArticle: null,
   currentNestId: '',
+  recentlyViewed: [],
 };
