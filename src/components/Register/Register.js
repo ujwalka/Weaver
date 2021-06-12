@@ -37,10 +37,10 @@ function Register() {
       alert(`${res.message}`);
       setState(initialState);
     } else {
-      const { accessToken } = res;
-      localStorage.setItem('accessToken', accessToken);
-      dispatch(login({ email }));
-      router.push('/dashboard');
+      // const { accessToken } = res;
+      // localStorage.setItem('accessToken', accessToken);
+      // dispatch(login({ email }));
+      router.push('/');
     }
   };
 
@@ -139,6 +139,7 @@ function Register() {
               bg: 'black',
               mb: 2,
               boxShadow: '0 6px 6px -4px rgba(50,50,50,1)',
+              cursor: 'pointer',
             }}
             type='submit'
             disabled={validateForm()}

@@ -119,6 +119,7 @@ function Login() {
               bg: 'black',
               mb: 2,
               boxShadow: '0 6px 6px -4px rgba(50,50,50,1)',
+              cursor: 'pointer',
             }}
             type='submit'
             disabled={validateForm()}

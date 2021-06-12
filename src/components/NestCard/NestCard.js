@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Box, Heading, Text, Button, Divider } from 'theme-ui';
+import strawApi from '../../apiServices/strawApi';
 import NewsCard from '../NewsCard/NewsCard';
 function NestCard({ nest }) {
   const [articles, setArticles] = useState(null);
   useEffect(() => {
-    if (nest && nest.articles) {
-      // const articleList = nest.articles.map((article) => JSON.parse(article));
-      // get articles
-      // display last 3
-      console.log(nest.articles);
-      // setArticles(articleList);
-    }
+    (async () => {
+      const { articles } = await strawApi.getAllArticles(nest._id);
+      const articleList = articles.map(({ newsArticle }) =>
+        JSON.parse(newsArticle)
+      );
+      setArticles(articleList.slice(-3));
+    })();
   }, [articles]);
-  console.log(nest);
+
   return (
     <div>
       <>
@@ -42,9 +43,12 @@ function NestCard({ nest }) {
           </Card>
           <Divider />
           <div>
-            <Heading as='h3'> Recently added</Heading>
-            {articles && articles.length
-              ? articles.map((article) => <p>{article}</p>)
+            <Heading as='h3' sx={{ mb: 3 }}>
+              Recently added
+              <Divider />
+            </Heading>
+            {articles
+              ? articles.map((article) => <NewsCard news={article} />)
               : null}
           </div>
         </Card>

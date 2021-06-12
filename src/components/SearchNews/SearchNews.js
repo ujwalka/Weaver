@@ -56,7 +56,12 @@ function SearchNews() {
                   }}
                 />
                 <Button
-                  sx={{ bg: 'black', height: '2.5rem', ml: 2 }}
+                  sx={{
+                    bg: 'black',
+                    height: '2.5rem',
+                    ml: 2,
+                    cursor: 'pointer',
+                  }}
                   type='submit'
                 >
                   <SearchOutlinedIcon />
