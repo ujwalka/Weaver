@@ -1,6 +1,6 @@
 const authenticationApi = {};
-// const BASE_URL = 'https://weaver-cw.herokuapp.com';
-const BASE_URL = 'http://localhost:5000';
+const BASE_URL = 'https://weaver-cw.herokuapp.com';
+// const BASE_URL = 'http://localhost:5000';
 authenticationApi.register = (user) => {
   return fetch(`${BASE_URL}/register`, {
     method: 'POST',
