@@ -74,7 +74,7 @@ function NestList() {
       </div>
       <Divider />
       {/* list of nests */}
-      <div>
+      <div sx={{ overflow: 'scroll', height: '82vh', scrollbarWidth: 'none' }}>
         {nests ? (
           nests.map((nest) => (
             <div sx={{ pointer: 'cursor' }} onClick={() => handleClick(nest)}>

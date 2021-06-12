@@ -7,7 +7,7 @@ function NestPage() {
     <>
       <DashNav />
       <StrawList />
-      <div className=''>hello from nest page</div>
+      {/* notes, description */}
     </>
   );
 }

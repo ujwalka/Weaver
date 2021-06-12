@@ -9,6 +9,7 @@ import { Button } from 'theme-ui';
 
 function DashNav() {
   const dispatch = useDispatch();
+  // @ts-ignore
   const { user } = useSelector((state) => state.authenticationReducer);
   const router = useRouter();
   const handleClick = async () => {
