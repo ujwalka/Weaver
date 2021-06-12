@@ -24,12 +24,13 @@ function DashNav() {
   return (
     <div
       sx={{
-        bg: 'black',
+        bg: '#0a0a0a',
         color: 'white',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
         height: '3rem',
+        zIndex: 100,
       }}
     >
       <div
@@ -48,7 +49,7 @@ function DashNav() {
           sx={{
             mr: 3,
             color: 'white',
-            bg: 'black',
+            bg: '#0a0a0a',
             fontSize: '1.2rem',
             cursor: 'pointer',
           }}
@@ -60,7 +61,7 @@ function DashNav() {
           sx={{
             mr: 3,
             color: 'white',
-            bg: 'black',
+            bg: '#0a0a0a',
             cursor: 'pointer',
             fontSize: '1.2rem',
           }}

@@ -27,7 +27,7 @@ function NewsList({ news, RecentViews, SearchNews }) {
                 borderRadius: '3',
                 padding: '1rem',
                 borderColor: 'border',
-                boxShadow: '0 8px 16px -4px rgba(0,0,0,.1)',
+                boxShadow: '0 4px 4px -4px rgba(255,255,255,.1)',
                 display: 'flex',
                 flexDirection: 'column',
               }}

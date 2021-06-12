@@ -43,7 +43,7 @@ function Dashboard() {
       {isAuthenticated ? (
         <>
           <DashNav />
-          <div sx={{ display: 'flex' }}>
+          <div sx={{ display: 'flex', bg: 'black', color: 'white' }}>
             <div sx={{ flex: 1.5 }}>
               <SearchNews />
             </div>

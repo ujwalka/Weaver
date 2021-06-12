@@ -11,7 +11,7 @@ function AddToNest({ article }) {
   return (
     <>
       <Select
-        sx={{ width: '15rem', overflow: 'scroll' }}
+        sx={{ width: '15rem', overflow: 'scroll', bg: 'black', color: 'white' }}
         arrow={
           <Box
             as='svg'

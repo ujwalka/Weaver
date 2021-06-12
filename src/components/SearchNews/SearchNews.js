@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import NewsList from '../NewsList/NewsList';
-import { Button, Divider } from 'theme-ui';
+import { Button, Divider, Input } from 'theme-ui';
 import { mockNews } from '../../../mockNews';
 import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 
@@ -42,7 +42,7 @@ function SearchNews() {
           <div sx={{ flex: 4 }}>
             <form action='submit' onSubmit={handleSubmit}>
               <div sx={{ display: 'flex' }}>
-                <input
+                <Input
                   type='text'
                   name='search'
                   id='search'
