@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Box, Heading, Text, Button, Divider } from 'theme-ui';
 import NewsCard from '../NewsCard/NewsCard';
-import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
 function NestCard({ nest }) {
   const [articles, setArticles] = useState(null);
   useEffect(() => {
@@ -40,7 +39,6 @@ function NestCard({ nest }) {
             {nest.notes ? (
               <Text sx={{ mr: 2 }}> Notes exist, display top first note</Text>
             ) : null}
-            <DeleteOutlineOutlinedIcon />
           </Card>
           <Divider />
           <div>

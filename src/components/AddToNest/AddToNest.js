@@ -1,13 +1,42 @@
 /** @jsxImportSource theme-ui */
 
-import React from 'react';
+import { useRouter } from 'next/router';
+import React, { useEffect } from 'react';
+import { useState } from 'react';
 import { Select, Box } from 'theme-ui';
+import authenticationApi from '../../apiServices/authenticationApi';
+import nestApi from '../../apiServices/nestApi';
+import strawApi from '../../apiServices/strawApi';
 
 function AddToNest({ article }) {
-  // get all nests
-  // add article test on click
-  //stringify article before sending it to the backend
-  //
+  const [nests, setNests] = useState(null);
+  const [userId, setUserId] = useState('');
+  const router = useRouter();
+
+  useEffect(() => {
+    const email = localStorage.getItem('email');
+    (async () => {
+      if (email) {
+        // @ts-ignore
+        const { userId } = await authenticationApi.getUser({ email });
+        setUserId(userId);
+        const { nest } = await nestApi.getAllNests(userId);
+        setNests(nest);
+      } else {
+        router.push('/');
+      }
+    })();
+  }, [userId]);
+  const handleClick = async (nest) => {
+    console.log(nest, typeof JSON.stringify(article));
+    const postedArticle = await strawApi.createArticle(
+      JSON.stringify(article),
+      nest._id
+    );
+    console.log(postedArticle);
+    alert('Article added');
+  };
+
   return (
     <>
       <Select
@@ -31,10 +60,17 @@ function AddToNest({ article }) {
         }
         defaultValue=''
       >
-        <option>Default Nest</option>
-        <option>Hi</option>
-        <option>Beep</option>
-        <option>Boop</option>
+        {nests
+          ? nests.map((nest) => (
+              <option
+                onClick={() => {
+                  handleClick(nest);
+                }}
+              >
+                {nest.description}
+              </option>
+            ))
+          : null}
       </Select>
     </>
   );

@@ -4,7 +4,7 @@ import router, { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import MockNewsContent from '../MockNewsContent/MockNewsContent';
-import { Spinner, Heading, Image, Text } from 'theme-ui';
+import { Spinner, Heading, Image, Text, Card } from 'theme-ui';
 import { padding } from 'styled-system';
 import AddToNest from '../AddToNest/AddToNest';
 function NewsArticle() {
@@ -24,21 +24,28 @@ function NewsArticle() {
           {/* image */}
           {/* content */}
           {/* link */}
-          <div
+          <Card
             sx={{
-              padding: '1rem',
-              display: 'flex',
-              justifyContent: 'space-between',
+              boxShadow: '0 4px 4px -4px rgba(0,0,0,.5)',
             }}
           >
-            <a
-              sx={{ textDecoration: 'none', color: 'black' }}
-              href={currentArticle.url}
+            <div
+              sx={{
+                padding: '1rem',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+              }}
             >
-              <Heading> {currentArticle.title}</Heading>
-            </a>
-            <AddToNest article={currentArticle} />
-          </div>
+              <a
+                sx={{ textDecoration: 'none', color: 'black' }}
+                href={currentArticle.url}
+              >
+                <Heading> {currentArticle.title}</Heading>
+              </a>
+              <AddToNest article={currentArticle} />
+            </div>
+          </Card>
           {currentArticle.urlToImage ? (
             <Image
               src={currentArticle.urlToImage}

@@ -2,13 +2,15 @@
 
 import React, { useEffect, useState } from 'react';
 import { Spinner } from '@theme-ui/components';
-import { Button, Divider } from 'theme-ui';
+import { Button, Divider, Text } from 'theme-ui';
 import nestApi from '../../apiServices/nestApi';
 import authenticationApi from '../../apiServices/authenticationApi';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import NestCard from '../NestCard/NestCard';
 import addToCurrentNest from '../../../redux/actionCreators/addToCurrentNest';
+import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
+
 function NestList() {
   const [description, setDescription] = useState('');
   const [nests, setNests] = useState(null);
@@ -34,6 +36,17 @@ function NestList() {
     e.preventDefault();
     if (userId) {
       await nestApi.createNest(description, userId);
+      const { nest } = await nestApi.getAllNests(userId);
+      setNests(nest);
+    } else {
+      router.push('/');
+    }
+  };
+
+  const handleDeleteClick = async (nest) => {
+    const nestId = nest._id;
+    if (userId) {
+      await nestApi.deleteNest(nestId, userId);
       const { nest } = await nestApi.getAllNests(userId);
       setNests(nest);
     } else {
@@ -77,11 +90,33 @@ function NestList() {
       <div sx={{ overflow: 'scroll', height: '82vh', scrollbarWidth: 'none' }}>
         {nests ? (
           nests.map((nest) => (
-            <div sx={{ pointer: 'cursor' }} onClick={() => handleClick(nest)}>
-              <div>
-                <NestCard nest={nest} />
+            <>
+              <div
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                }}
+              >
+                <div> </div>
+                <div
+                  sx={{
+                    alignItems: 'center',
+                    display: 'flex',
+                    pointer: 'cursor',
+                    mt: 1,
+                  }}
+                  onClick={() => handleDeleteClick(nest)}
+                >
+                  <Text as='h3'>Delete</Text>
+                  <DeleteOutlineOutlinedIcon />
+                </div>
               </div>
-            </div>
+              <div sx={{ pointer: 'cursor' }} onClick={() => handleClick(nest)}>
+                <div>
+                  <NestCard nest={nest} />
+                </div>
+              </div>
+            </>
           ))
         ) : (
           <Spinner />

@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import addToCurrentArticle from '../../../redux/actionCreators/addToCurrentArticle';
 import NewsCard from '../NewsCard/NewsCard';
 import AddToNest from '../AddToNest/AddToNest';
-import { Card } from 'theme-ui';
+import { Card, Flex } from 'theme-ui';
 
 function NewsList({ news, RecentViews, SearchNews }) {
   const dispatch = useDispatch();
@@ -18,8 +18,8 @@ function NewsList({ news, RecentViews, SearchNews }) {
     router.push('/article');
   };
   return (
-    <div>
-      <div>
+    <>
+      <div sx={{ display: 'flex', flexDirection: 'column' }}>
         {news.map((article) => (
           <>
             <Card
@@ -33,7 +33,14 @@ function NewsList({ news, RecentViews, SearchNews }) {
               }}
             >
               {SearchNews ? (
-                <div sx={{ mb: '.5rem', position: 'relative', left: '35rem' }}>
+                <div
+                  sx={{
+                    mb: '.5rem',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                  }}
+                >
+                  <div> </div>
                   <AddToNest article={article} />
                 </div>
               ) : (
@@ -55,7 +62,7 @@ function NewsList({ news, RecentViews, SearchNews }) {
           </>
         ))}
       </div>
-    </div>
+    </>
   );
 }
 
