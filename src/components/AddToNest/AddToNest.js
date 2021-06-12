@@ -3,7 +3,11 @@
 import React from 'react';
 import { Select, Box } from 'theme-ui';
 
-function AddToNest() {
+function AddToNest({ article }) {
+  // get all nests
+  // add article test on click
+  //stringify article before sending it to the backend
+  //
   return (
     <>
       <Select

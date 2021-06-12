@@ -5,14 +5,16 @@ import { Spinner } from '@theme-ui/components';
 import { Button, Divider } from 'theme-ui';
 import nestApi from '../../apiServices/nestApi';
 import authenticationApi from '../../apiServices/authenticationApi';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import NestCard from '../NestCard/NestCard';
+import addToCurrentNest from '../../../redux/actionCreators/addToCurrentNest';
 function NestList() {
   const [description, setDescription] = useState('');
   const [nests, setNests] = useState(null);
   const [userId, setUserId] = useState('');
   const router = useRouter();
+  const dispatch = useDispatch();
   useEffect(() => {
     const email = localStorage.getItem('email');
     (async () => {
@@ -30,12 +32,9 @@ function NestList() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // post nest
     if (userId) {
       await nestApi.createNest(description, userId);
-      // get nest list
       const { nest } = await nestApi.getAllNests(userId);
-      // update nest list
       setNests(nest);
     } else {
       router.push('/');
@@ -43,6 +42,10 @@ function NestList() {
   };
   const handleChange = (e) => {
     setDescription(e.target.value);
+  };
+  const handleClick = (nest) => {
+    dispatch(addToCurrentNest(nest._id));
+    router.push('/nest');
   };
   return (
     <>
@@ -74,8 +77,10 @@ function NestList() {
       <div>
         {nests ? (
           nests.map((nest) => (
-            <div>
-              <NestCard nest={nest} />
+            <div sx={{ pointer: 'cursor' }} onClick={() => handleClick(nest)}>
+              <div>
+                <NestCard nest={nest} />
+              </div>
             </div>
           ))
         ) : (

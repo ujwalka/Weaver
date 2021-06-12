@@ -2,10 +2,10 @@ import React from 'react';
 
 function StrawList() {
   return (
+    // get all straws
+    // add redirecion onclick
     <div>
-      {/* navbar to branch*/}
       {/* straws with notes preview*/}
-      {/*  notes*/}
       List of Straws
     </div>
   );

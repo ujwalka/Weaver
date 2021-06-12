@@ -34,7 +34,7 @@ function NewsList({ news, RecentViews, SearchNews }) {
             >
               {SearchNews ? (
                 <div sx={{ mb: '.5rem', position: 'relative', left: '35rem' }}>
-                  <AddToNest />
+                  <AddToNest article={article} />
                 </div>
               ) : (
                 <></>

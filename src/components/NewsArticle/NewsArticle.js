@@ -37,7 +37,7 @@ function NewsArticle() {
             >
               <Heading> {currentArticle.title}</Heading>
             </a>
-            <AddToNest />
+            <AddToNest article={currentArticle} />
           </div>
           {currentArticle.urlToImage ? (
             <Image

@@ -3,7 +3,6 @@ import React from 'react';
 import AddToNest from '../AddToNest/AddToNest';
 
 function NewsCard({ news, SearchNews, RecentViews }) {
-  const handleClick = () => {};
   return (
     <>
       <Card
