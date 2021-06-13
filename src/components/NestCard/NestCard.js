@@ -2,15 +2,19 @@ import React, { useEffect, useState } from 'react';
 import { Card, Box, Heading, Text, Button, Divider } from 'theme-ui';
 import strawApi from '../../apiServices/strawApi';
 import NewsCard from '../NewsCard/NewsCard';
+import { uniqWith, isEqual } from 'lodash';
+
 function NestCard({ nest }) {
   const [articles, setArticles] = useState(null);
   useEffect(() => {
     (async () => {
       const { articles } = await strawApi.getAllArticles(nest._id);
+
       const articleList = articles.map(({ newsArticle }) =>
         JSON.parse(newsArticle)
       );
-      setArticles(articleList.slice(-3));
+      const articlesUniq = uniqWith(articleList, isEqual);
+      setArticles(articlesUniq.slice(-3));
     })();
   }, [articles]);
 

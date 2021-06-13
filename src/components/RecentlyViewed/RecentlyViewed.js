@@ -13,7 +13,6 @@ import { Text } from 'theme-ui';
 function RecentlyViewed() {
   const [recent, setRecent] = useState(null);
   const { recentlyViewed } = useSelector((state) => state.newsReducer);
-  console.log(recentlyViewed, '>>>>>>>>>>>>>...');
   useEffect(() => {
     const recentlyViewedUniq = uniqWith(recentlyViewed, isEqual);
     setRecent(recentlyViewedUniq);
