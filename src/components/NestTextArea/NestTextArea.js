@@ -22,7 +22,7 @@ function NestTextArea() {
       >
         <div sx={{ height: '47vh', mb: 2 }}>
           {/* Note */}
-          <Heading>Notes</Heading>
+          <Heading>Warbles</Heading>
           <Divider />
         </div>
         <form

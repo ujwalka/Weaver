@@ -5,7 +5,6 @@ import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import authenticationApi from '../../apiServices/authenticationApi';
-import login from '../../../redux/actionCreators/login';
 import { Label, Input, Button, Text, Card, Divider } from 'theme-ui';
 
 const initialState = {
@@ -32,14 +31,12 @@ function Register() {
     e.preventDefault();
     const { email, password, name } = state;
     const user = { email, password, name: name.trim() };
+    // get allusers, if the email exists don't register
     const res = await authenticationApi.register(user);
     if (res.error) {
       alert(`${res.message}`);
       setState(initialState);
     } else {
-      // const { accessToken } = res;
-      // localStorage.setItem('accessToken', accessToken);
-      // dispatch(login({ email }));
       router.push('/');
     }
   };

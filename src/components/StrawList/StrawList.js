@@ -1,8 +1,11 @@
+/** @jsxImportSource theme-ui */
+
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import strawApi from '../../apiServices/strawApi';
 import { uniqWith, isEqual } from 'lodash';
+import StrawCard from '../StrawCard/StrawCard';
 
 function StrawList() {
   const [straws, setStraws] = useState(null);
@@ -23,9 +26,16 @@ function StrawList() {
   return (
     // get all straws
     // add redirecion onclick to straw page
-    <div>
+    <div
+      sx={{
+        overflow: 'scroll',
+        padding: '1rem',
+        height: '92vh',
+        scrollbarWidth: 'none',
+      }}
+    >
       {/* straws with notes preview*/}
-      {straws ? straws.map((straw) => <p>{straw.title}</p>) : null}
+      {straws ? straws.map((straw) => <StrawCard straw={straw} />) : null}
     </div>
   );
 }

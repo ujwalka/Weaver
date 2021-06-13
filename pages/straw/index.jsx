@@ -4,10 +4,10 @@ import DashNav from '../../src/components/DashNav/DashNav';
 function StrawPage() {
   return (
     <>
-      {/* navbar to nest*/}
       <DashNav />
       {/* article */}
-      {/* notes */}
+      {/* chirps */}
+      {/* Related articles, do a search with description string */}
       <div className=''>Hello from straw page</div>
     </>
   );

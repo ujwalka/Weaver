@@ -12,6 +12,7 @@ function DashNav() {
   const dispatch = useDispatch();
   // @ts-ignore
   const { user } = useSelector((state) => state.authenticationReducer);
+  console.log(user, '/////////////////');
   const router = useRouter();
   const handleClick = async () => {
     await authenticationApi.logout('accessToken');
