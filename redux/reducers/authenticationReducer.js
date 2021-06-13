@@ -8,12 +8,6 @@ const authenticationReducer = (state = initialAuthState, action) => {
         isAuthenticated: true,
         user: action.payload,
       };
-    // case 'LOGOUT':
-    //   return {
-    //     ...state,
-    //     isAuthenticated: false,
-    //     user: null,
-    //   };
     case 'SET_IS_AUTHENTICATED':
       return {
         ...state,

@@ -1,10 +1,3 @@
-// import { createStore } from 'redux';
-// import reducer from '../reducers';
-
-// const store = createStore(reducer);
-
-// export default store;
-
 import { createStore } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
