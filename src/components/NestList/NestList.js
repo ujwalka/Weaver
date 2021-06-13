@@ -15,6 +15,7 @@ function NestList() {
   const [description, setDescription] = useState('');
   const [nests, setNests] = useState(null);
   const [userId, setUserId] = useState('');
+  // @ts-ignore
   const { user } = useSelector((state) => state.authenticationReducer);
   const router = useRouter();
   const dispatch = useDispatch();
@@ -124,13 +125,15 @@ function NestList() {
                       height: '2.5rem',
                       alignItems: 'center',
                       display: 'flex',
-                      ml: '.5rem',
+                      mr: '.5rem',
+                      mt: '.5rem',
                     }}
                   >
                     <DeleteOutlineOutlinedIcon />
                   </Button>
                 </div>
               </div>
+              <Divider />
               <div sx={{ pointer: 'cursor' }} onClick={() => handleClick(nest)}>
                 <div>{nest ? <NestCard nest={nest} /> : null}</div>
               </div>

@@ -16,7 +16,7 @@ function SearchNews({ onBranch }) {
     setSearch(e.target.value);
   };
 
-  async function handleSubmit(e) {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const searchString = search
       .split(' ')
@@ -27,7 +27,7 @@ function SearchNews({ onBranch }) {
     );
     const newsArticles = await res.json();
     setSearchedNews(newsArticles.articles);
-  }
+  };
   return (
     <>
       <div sx={{ padding: '1rem' }}>

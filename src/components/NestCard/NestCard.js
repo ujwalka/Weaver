@@ -3,9 +3,12 @@ import { Card, Box, Heading, Text, Button, Divider } from 'theme-ui';
 import strawApi from '../../apiServices/strawApi';
 import NewsCard from '../NewsCard/NewsCard';
 import { uniqWith, isEqual } from 'lodash';
+import nestApi from '../../apiServices/nestApi';
+import { truncate } from 'lodash';
 
 function NestCard({ nest }) {
   const [articles, setArticles] = useState(null);
+  const [lastWarble, setLastWarble] = useState('');
   useEffect(() => {
     (async () => {
       const { articles } = await strawApi.getAllArticles(nest._id);
@@ -14,6 +17,17 @@ function NestCard({ nest }) {
       );
       const articlesUniq = uniqWith(articleList, isEqual);
       setArticles(articlesUniq.slice(-3));
+
+      // get all warbles, pick the last one
+      const { notes } = await nestApi.getAllNestNotes(nest._id);
+      const lastCompleteWarble = notes.slice(-1);
+      setLastWarble(
+        truncate(lastCompleteWarble, {
+          length: 130,
+          separator: /,? +/,
+        })
+      );
+      // set last warble
     })();
   }, []);
 
@@ -24,7 +38,6 @@ function NestCard({ nest }) {
           sx={{
             borderRadius: '3',
             padding: '1rem',
-
             borderColor: 'border',
             boxShadow: '4px 4px 4px -4px rgba(0,0,0,.3)',
             display: 'flex',
@@ -37,12 +50,7 @@ function NestCard({ nest }) {
               display: 'flex',
             }}
           >
-            {nest.notes ? (
-              <Text sx={{ mr: 2 }}>
-                {' '}
-                Warbles exist, display last 3 warble here
-              </Text>
-            ) : null}
+            {nest.notes ? <Text sx={{ mr: 2 }}>{lastWarble}</Text> : null}
           </Card>
           <Divider />
           <div>

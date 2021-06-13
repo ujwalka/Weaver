@@ -24,6 +24,31 @@ nestApi.createNest = (description, userId) => {
     .then((res) => res.json())
     .catch((err) => console.log(err));
 };
+nestApi.postNestNote = (nestId, note) => {
+  //  const { nestId, note } = req.body;
+  // note: String
+
+  return fetch(`${BASE_URL}/nest/note`, {
+    method: 'POST',
+    credentials: 'include',
+    mode: 'cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ nestId, note }),
+  })
+    .then()
+    .catch((err) => console.log(err));
+};
+nestApi.getAllNestNotes = (nestId) => {
+  return fetch(`${BASE_URL}/notes/${nestId}`, {
+    method: 'GET',
+    credentials: 'include',
+    mode: 'cors',
+    headers: { 'Content-Type': 'application/json' },
+  })
+    .then((res) => res.json())
+    .catch((err) => console.log(err));
+};
+
 nestApi.deleteNest = (nestId, userId) => {
   // const { nestId, userId } = req.body;
   return fetch(`${BASE_URL}/nest`, {
