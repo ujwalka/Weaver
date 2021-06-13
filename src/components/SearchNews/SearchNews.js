@@ -8,7 +8,7 @@ import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 
 const initialState = '';
 
-function SearchNews() {
+function SearchNews({ onBranch }) {
   const [search, setSearch] = useState(initialState);
   const [searchedNews, setSearchedNews] = useState(null);
 
@@ -82,8 +82,8 @@ function SearchNews() {
             {searchedNews || mockNews.articles ? (
               <NewsList
                 news={searchedNews || mockNews.articles}
-                RecentViews={false}
                 SearchNews={true}
+                onBranch={onBranch}
               />
             ) : (
               <p>No search results</p>

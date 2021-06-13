@@ -6,10 +6,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import addToCurrentArticle from '../../../redux/actionCreators/addToCurrentArticle';
 import NewsCard from '../NewsCard/NewsCard';
 import AddToNest from '../AddToNest/AddToNest';
-import { Card, Flex } from 'theme-ui';
+import { Card, Divider, Flex } from 'theme-ui';
 import addToRecentlyViewed from '../../../redux/actionCreators/addToRecentlyViewed';
 
-function NewsList({ news, RecentViews, SearchNews }) {
+function NewsList({ news, SearchNews, onBranch }) {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
   console.log(state);
@@ -36,7 +36,7 @@ function NewsList({ news, RecentViews, SearchNews }) {
                 flexDirection: 'column',
               }}
             >
-              {SearchNews ? (
+              {SearchNews && !onBranch ? (
                 <div
                   sx={{
                     mb: '.5rem',
@@ -58,11 +58,12 @@ function NewsList({ news, RecentViews, SearchNews }) {
                 <NewsCard
                   key={article.url}
                   news={article}
-                  RecentViews={RecentViews}
                   SearchNews={SearchNews}
+                  onBranch={onBranch}
                 />
               </div>
             </Card>
+            {onBranch ? <Divider /> : null}
           </>
         ))}
       </div>

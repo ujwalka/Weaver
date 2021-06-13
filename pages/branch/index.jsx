@@ -20,7 +20,7 @@ function BranchPage() {
 
         <div sx={{ flex: 1 }}>
           {/* quick search */}
-          <SearchNews />
+          <SearchNews onBranch={true} />
         </div>
       </div>
       {/* recent searches */}

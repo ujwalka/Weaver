@@ -2,7 +2,7 @@ import { Box, Card, Heading, Image, Text } from '@theme-ui/components';
 import React from 'react';
 import AddToNest from '../AddToNest/AddToNest';
 
-function NewsCard({ news, SearchNews, RecentViews }) {
+function NewsCard({ news, SearchNews, onBranch }) {
   return (
     <>
       <Card
@@ -11,7 +11,7 @@ function NewsCard({ news, SearchNews, RecentViews }) {
           cursor: 'pointer',
         }}
       >
-        {SearchNews ? (
+        {SearchNews && !onBranch ? (
           <Image
             src={news.urlToImage}
             sx={{
