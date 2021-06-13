@@ -35,7 +35,7 @@ nestApi.deleteNest = (nestId, userId) => {
     },
     body: JSON.stringify({ nestId, userId }),
   })
-    .then((res) => res.json())
+    .then()
     .catch((err) => console.log(err));
 };
 

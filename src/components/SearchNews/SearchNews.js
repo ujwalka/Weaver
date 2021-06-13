@@ -42,19 +42,35 @@ function SearchNews({ onBranch }) {
           <div sx={{ flex: 4 }}>
             <form action='submit' onSubmit={handleSubmit}>
               <div sx={{ display: 'flex' }}>
-                <Input
-                  type='text'
-                  name='search'
-                  id='search'
-                  value={search}
-                  onChange={handleChange}
-                  placeholder='Recent news'
-                  required
-                  sx={{
-                    height: '2.5rem',
-                    width: '75%',
-                  }}
-                />
+                {onBranch ? (
+                  <Input
+                    type='text'
+                    name='search'
+                    id='search'
+                    value={search}
+                    onChange={handleChange}
+                    placeholder='Quick search'
+                    required
+                    sx={{
+                      height: '2.5rem',
+                      width: '75%',
+                    }}
+                  />
+                ) : (
+                  <Input
+                    type='text'
+                    name='search'
+                    id='search'
+                    value={search}
+                    onChange={handleChange}
+                    placeholder='Recent news'
+                    required
+                    sx={{
+                      height: '2.5rem',
+                      width: '75%',
+                    }}
+                  />
+                )}
                 <Button
                   sx={{
                     bg: 'black',

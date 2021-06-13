@@ -45,7 +45,7 @@ function Dashboard() {
           <DashNav />
           <div sx={{ display: 'flex', bg: '#0a0a0a', color: 'white' }}>
             <div sx={{ flex: 1.5 }}>
-              <SearchNews />
+              <SearchNews onBranch={false} />
             </div>
             <div sx={{ flex: 1 }}>
               <div sx={{ display: 'flex', flexDirection: 'column' }}>

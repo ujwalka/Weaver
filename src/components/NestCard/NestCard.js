@@ -9,14 +9,13 @@ function NestCard({ nest }) {
   useEffect(() => {
     (async () => {
       const { articles } = await strawApi.getAllArticles(nest._id);
-
       const articleList = articles.map(({ newsArticle }) =>
         JSON.parse(newsArticle)
       );
       const articlesUniq = uniqWith(articleList, isEqual);
       setArticles(articlesUniq.slice(-3));
     })();
-  }, [articles]);
+  }, []);
 
   return (
     <div>

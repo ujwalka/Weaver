@@ -32,7 +32,7 @@ function NestList() {
         router.push('/');
       }
     })();
-  }, [userId]);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -125,9 +125,7 @@ function NestList() {
                 </div>
               </div>
               <div sx={{ pointer: 'cursor' }} onClick={() => handleClick(nest)}>
-                <div>
-                  <NestCard nest={nest} />
-                </div>
+                <div>{nest ? <NestCard nest={nest} /> : null}</div>
               </div>
             </>
           ))
