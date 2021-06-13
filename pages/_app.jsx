@@ -15,11 +15,11 @@ export default function MyApp({ Component, pageProps }) {
       // @ts-ignore
       theme={theme}
     >
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
+      <PersistGate loading={null} persistor={persistor}>
+        <Provider store={store}>
           <Component {...pageProps} />
-        </PersistGate>
-      </Provider>
+        </Provider>
+      </PersistGate>
     </ThemeProvider>
   );
 }
