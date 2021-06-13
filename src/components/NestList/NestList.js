@@ -88,7 +88,14 @@ function NestList() {
         </form>
       </div>
       <Divider />
-      <div sx={{ overflow: 'scroll', height: '82vh', scrollbarWidth: 'none' }}>
+      <div
+        sx={{
+          overflow: 'scroll',
+          height: '82vh',
+          '::-webkit-scrollbar': { width: 0 },
+          scrollbarWidth: 'none',
+        }}
+      >
         {nests ? (
           nests.map((nest) => (
             <>

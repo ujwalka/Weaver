@@ -37,6 +37,8 @@ function RecentlyViewed() {
             flexDirection: 'column',
             overflowY: 'scroll',
             scrollbarWidth: 'none',
+            '::-webkit-scrollbar': { width: 0 },
+
             padding: '1rem',
             height: '26vh',
           }}

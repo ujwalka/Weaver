@@ -32,16 +32,14 @@ function TopNews() {
             flexDirection: 'column',
             overflowY: 'scroll',
             scrollbarWidth: 'none',
+            '::-webkit-scrollbar': { width: 0 },
+
             height: '45vh',
             padding: '1rem',
           }}
         >
           {mockNews.articles ? (
-            <NewsList
-              news={mockNews.articles || topNews}
-              RecentViews={false}
-              SearchNews={false}
-            />
+            <NewsList news={mockNews.articles || topNews} SearchNews={false} />
           ) : (
             <div sx={{ justifyContent: 'space-around' }}>
               <Spinner />

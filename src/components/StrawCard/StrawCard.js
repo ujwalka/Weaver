@@ -17,14 +17,25 @@ function StrawCard({ straw }) {
           boxShadow: '0 4px 8px -4px rgba(0,0,0,.1)',
         }}
       >
-        <Image
-          src={straw.urlToImage}
-          sx={{
-            height: '100%',
-            pr: '.5rem',
-            flex: 2.1,
-          }}
-        />
+        {straw.urlToImage ? (
+          <Image
+            src={straw.urlToImage}
+            sx={{
+              height: '100%',
+              pr: '.5rem',
+              flex: 2.1,
+            }}
+          />
+        ) : (
+          <Image
+            src={straw.urlToImage}
+            sx={{
+              height: '100%',
+              pr: '.5rem',
+              flex: 2.1,
+            }}
+          />
+        )}
 
         <Box sx={{ flex: 4 }}>
           <Heading as='h3' mb={2}>

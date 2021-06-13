@@ -1,5 +1,6 @@
 import React from 'react';
 import DashNav from '../../src/components/DashNav/DashNav';
+import StrawArticle from '../../src/components/StrawArticle/StrawArticle';
 
 function StrawPage() {
   return (
@@ -8,7 +9,7 @@ function StrawPage() {
       {/* article */}
       {/* chirps */}
       {/* Related articles, do a search with description string */}
-      <div className=''>Hello from straw page</div>
+      <StrawArticle />
     </>
   );
 }

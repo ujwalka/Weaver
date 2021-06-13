@@ -41,6 +41,8 @@ function StrawList() {
         overflow: 'scroll',
         padding: '1rem',
         height: '92vh',
+        '::-webkit-scrollbar': { width: 0 },
+
         scrollbarWidth: 'none',
       }}
     >

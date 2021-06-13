@@ -4,10 +4,12 @@ import { initialState } from './initialState';
 
 import newsReducer from './newsReducer';
 import nestReducer from './nestReducer';
+import strawReducer from './strawReducer';
 const appReducer = combineReducers({
   authenticationReducer,
   newsReducer,
   nestReducer,
+  strawReducer,
 });
 
 const rootReducer = (state = initialState, action) => {

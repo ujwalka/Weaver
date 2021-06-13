@@ -91,6 +91,7 @@ function SearchNews({ onBranch }) {
             height: '82vh',
             padding: '1rem',
             overflowY: 'scroll',
+            '::-webkit-scrollbar': { width: 0 },
             scrollbarWidth: 'none',
           }}
         >

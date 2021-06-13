@@ -1,6 +1,6 @@
 import { initialStrawState } from './initialState/initialStrawState';
 
-const nestReducer = (state = initialStrawState, action) => {
+const strawReducer = (state = initialStrawState, action) => {
   switch (action.type) {
     case 'ADD_TO_CURRENT_STRAW':
       return {
@@ -12,4 +12,4 @@ const nestReducer = (state = initialStrawState, action) => {
       return state;
   }
 };
-export default nestReducer;
+export default strawReducer;
