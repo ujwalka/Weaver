@@ -1,6 +1,6 @@
-import { initialState } from './initialState';
+import { initialAuthState } from './initialState/initialAuthState';
 
-const authenticationReducer = (state = initialState, action) => {
+const authenticationReducer = (state = initialAuthState, action) => {
   switch (action.type) {
     case 'LOGIN':
       return {

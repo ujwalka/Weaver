@@ -1,6 +1,6 @@
-import { initialState } from './initialState';
+import { initialNestState } from './initialState/initialNestState';
 
-const nestReducer = (state = initialState, action) => {
+const nestReducer = (state = initialNestState, action) => {
   switch (action.type) {
     case 'ADD_TO_CURRENT_NEST':
       return {

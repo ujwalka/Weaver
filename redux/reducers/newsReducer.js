@@ -1,6 +1,6 @@
-import { initialState } from './initialState';
+import { initalNewsState } from './initialState/initialNewsState';
 
-const newsReducer = (state = initialState, action) => {
+const newsReducer = (state = initalNewsState, action) => {
   switch (action.type) {
     case 'ADD_TO_CURRENT_ARTICLE':
       return {
