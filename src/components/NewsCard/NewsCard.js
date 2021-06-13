@@ -8,7 +8,7 @@ function NewsCard({ news, SearchNews, RecentViews }) {
       <Card
         sx={{
           display: 'flex',
-          zIndex: -100,
+          cursor: 'pointer',
         }}
       >
         {SearchNews ? (

@@ -41,7 +41,7 @@ function DashNav() {
         onClick={() => router.push('/dashboard')}
       >
         <h1 sx={{ textShadow: '#bfbfbf 1px 0 3px' }}>
-          <b>Weaver</b>
+          <b sx={{ cursor: 'pointer' }}>Weaver</b>
         </h1>
       </div>
       <div sx={{}}>

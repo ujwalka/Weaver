@@ -29,6 +29,7 @@ function NestCard({ nest }) {
             boxShadow: '0 8px 16px -4px rgba(0,0,0,.1)',
             display: 'flex',
             flexDirection: 'column',
+            cursor: 'pointer',
           }}
         >
           <Card
