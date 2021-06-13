@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import addToCurrentArticle from '../../../redux/actionCreators/addToCurrentArticle';
 import NewsCard from '../NewsCard/NewsCard';
 import AddToNest from '../AddToNest/AddToNest';
-import { Card, Divider, Flex } from 'theme-ui';
+import { Card, Divider, Flex, Heading } from 'theme-ui';
 import addToRecentlyViewed from '../../../redux/actionCreators/addToRecentlyViewed';
 
 function NewsList({ news, SearchNews, onBranch }) {
@@ -44,8 +44,12 @@ function NewsList({ news, SearchNews, onBranch }) {
                     justifyContent: 'space-between',
                   }}
                 >
-                  <div> </div>
-                  <AddToNest article={article} />
+                  <div sx={{ flex: 4 }}>
+                    <Heading sx={{}}> {article.title} </Heading>
+                  </div>
+                  <div sx={{ flex: 1 }}>
+                    <AddToNest article={article} />
+                  </div>
                 </div>
               ) : (
                 <></>

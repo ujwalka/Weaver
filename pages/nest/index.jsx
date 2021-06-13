@@ -4,6 +4,7 @@ import React from 'react';
 import StrawList from '../../src/components/StrawList/StrawList';
 import DashNav from '../../src/components/DashNav/DashNav';
 import NestTextArea from '../../src/components/NestTextArea/NestTextArea';
+import RecentlyViewed from '../../src/components/RecentlyViewed/RecentlyViewed';
 
 function NestPage() {
   return (
@@ -16,7 +17,16 @@ function NestPage() {
         <div sx={{ flex: 1 }}>
           {/* notesList */}
           {/* add to notes */}
-          <NestTextArea />
+          <div
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              padding: 2,
+            }}
+          >
+            <NestTextArea />
+            <RecentlyViewed />
+          </div>
         </div>
       </div>
       {/* notes, description */}

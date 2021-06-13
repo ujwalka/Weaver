@@ -13,8 +13,18 @@ function NestTextArea() {
     <>
       <div sx={{ height: '47vh', mb: 2 }}>
         {/* Note */}
-        <Heading>Warbles</Heading>
-        <Divider />
+        <div>
+          <div
+            sx={{
+              padding: '1rem',
+              display: 'flex',
+              flexDirection: 'column',
+            }}
+          >
+            <Heading> Chirps</Heading>
+            <Divider />
+          </div>
+        </div>
       </div>
       <form
         sx={{
@@ -26,7 +36,7 @@ function NestTextArea() {
         <div sx={{ mr: 1, flex: 4 }}>
           <Input sx={{}} />
         </div>
-        <Button sx={{ bg: 'black', flex: 1 }}> Warble</Button>
+        <Button sx={{ bg: 'black', flex: 1 }}> Chirp</Button>
       </form>
     </>
   );

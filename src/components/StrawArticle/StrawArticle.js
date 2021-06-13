@@ -33,7 +33,6 @@ function StrawArticle() {
                 padding: '1rem',
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'space-between',
               }}
             >
               <a

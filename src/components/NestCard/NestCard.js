@@ -24,8 +24,9 @@ function NestCard({ nest }) {
           sx={{
             borderRadius: '3',
             padding: '1rem',
+
             borderColor: 'border',
-            boxShadow: '0 8px 16px -4px rgba(0,0,0,.1)',
+            boxShadow: '4px 4px 4px -4px rgba(0,0,0,.3)',
             display: 'flex',
             flexDirection: 'column',
             cursor: 'pointer',
