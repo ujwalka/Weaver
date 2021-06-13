@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { Spinner } from '@theme-ui/components';
-import { Button, Divider, Text } from 'theme-ui';
+import { Button, Divider, Text, Heading } from 'theme-ui';
 import nestApi from '../../apiServices/nestApi';
 import authenticationApi from '../../apiServices/authenticationApi';
 import { useDispatch, useSelector } from 'react-redux';
@@ -88,7 +88,6 @@ function NestList() {
         </form>
       </div>
       <Divider />
-      {/* list of nests */}
       <div sx={{ overflow: 'scroll', height: '82vh', scrollbarWidth: 'none' }}>
         {nests ? (
           nests.map((nest) => (
@@ -97,20 +96,32 @@ function NestList() {
                 sx={{
                   display: 'flex',
                   justifyContent: 'space-between',
+                  alignItems: 'center',
                 }}
               >
-                <div> </div>
+                <div sx={{ mt: 20, ml: 15 }}>
+                  <Heading as='h2' mb={2}>
+                    {nest.description}
+                  </Heading>
+                </div>
                 <div
                   sx={{
-                    alignItems: 'center',
-                    display: 'flex',
                     pointer: 'cursor',
                     mt: 1,
                   }}
                   onClick={() => handleDeleteClick(nest)}
                 >
-                  <Text as='h3'>Delete</Text>
-                  <DeleteOutlineOutlinedIcon />
+                  <Button
+                    sx={{
+                      bg: 'black',
+                      height: '2.5rem',
+                      alignItems: 'center',
+                      display: 'flex',
+                      ml: '.5rem',
+                    }}
+                  >
+                    <DeleteOutlineOutlinedIcon />
+                  </Button>
                 </div>
               </div>
               <div sx={{ pointer: 'cursor' }} onClick={() => handleClick(nest)}>

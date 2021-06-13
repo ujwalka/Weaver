@@ -10,9 +10,9 @@ import { Card, Divider, Flex } from 'theme-ui';
 import addToRecentlyViewed from '../../../redux/actionCreators/addToRecentlyViewed';
 
 function NewsList({ news, SearchNews, onBranch }) {
+  // const state = useSelector((state) => state);
+  // console.log(state);
   const dispatch = useDispatch();
-  const state = useSelector((state) => state);
-  console.log(state);
   const router = useRouter();
   const handleClick = (article) => {
     dispatch(addToCurrentArticle(article));

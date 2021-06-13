@@ -37,13 +37,11 @@ function NestCard({ nest }) {
               display: 'flex',
             }}
           >
-            <Box sx={{ flex: 1 }}>
-              <Heading as='h2' mb={2}>
-                {nest.description}
-              </Heading>
-            </Box>
             {nest.notes ? (
-              <Text sx={{ mr: 2 }}> Notes exist, display top first note</Text>
+              <Text sx={{ mr: 2 }}>
+                {' '}
+                Warbles exist, display last 3 warble here
+              </Text>
             ) : null}
           </Card>
           <Divider />
