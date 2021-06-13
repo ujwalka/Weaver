@@ -8,7 +8,6 @@ import { useSelector } from 'react-redux';
 function NestTextArea() {
   // @ts-ignore
   const { currentNestId } = useSelector((state) => state.nestReducer);
-  console.log(currentNestId);
 
   // save from text area into the nest notes
   return (

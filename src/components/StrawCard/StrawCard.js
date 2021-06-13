@@ -21,8 +21,8 @@ function StrawCard({ straw }) {
           src={straw.urlToImage}
           sx={{
             height: '100%',
-            pr: '1rem',
-            flex: 2,
+            pr: '.5rem',
+            flex: 2.1,
           }}
         />
 
