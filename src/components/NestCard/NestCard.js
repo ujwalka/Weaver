@@ -17,7 +17,7 @@ function NestCard({ nest }) {
         JSON.parse(newsArticle)
       );
       const articlesUniq = uniqWith(articleList, isEqual);
-      setArticles(articlesUniq.slice(-3));
+      setArticles(articlesUniq.reverse().slice(-3));
 
       // get all warbles, pick the last one
       const { notes } = await nestApi.getAllNestNotes(nest._id);

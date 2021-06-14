@@ -33,8 +33,7 @@ function StrawList() {
         articleList,
         (object, other) => object.parsedStraw === other.parsedStraw
       );
-      console.log(articlesUniq);
-      setStraws(articlesUniq);
+      setStraws(articlesUniq.reverse());
     })();
   }, []);
 
