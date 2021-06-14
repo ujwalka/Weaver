@@ -25,7 +25,7 @@ function TopNews() {
   };
   useEffect(() => {
     fetchNews();
-  }, [url]);
+  }, []);
   return (
     <>
       <div sx={{ padding: '1rem', pt: 0, mt: 0 }}>

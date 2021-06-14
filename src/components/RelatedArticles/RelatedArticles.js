@@ -5,21 +5,27 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { mockNews } from '../../../mockNews';
 import NewsList from '../NewsList/NewsList';
-import { uniqWith, isEqual } from 'lodash';
 import { Text } from 'theme-ui';
 
-// _.uniqWith(objects, _.isEqual);
+function RelatedArticles() {
+  const [related, setRelated] = useState(null);
+  const { currentStraw } = useSelector((state) => state.strawReducer);
+  const { parsedStraw } = currentStraw;
 
-function relatedlyViewed() {
-  // const [related, setrelated] = useState(null);
-  // const { relatedlyViewed } = useSelector((state) => state.newsReducer);
-  // useEffect(() => {
-  //   const relatedlyViewedUniq = uniqWith(relatedlyViewed, isEqual);
-  //   setrelated(relatedlyViewedUniq);
-  // }, []);
-  const related = null;
-  //get related
-  // display related
+  const searchString = parsedStraw.title
+    .split(' ')
+    .filter((str) => str.length > 0)
+    .join('+');
+
+  const url = `https://newsapi.org/v2/everything?q=${searchString}&apiKey=614105ee8fe04bf1b5a7ceaf333fc812`;
+  const fetchNews = async () => {
+    const res = await fetch(url);
+    const newsResults = await res.json();
+    setRelated(newsResults.articles);
+  };
+  useEffect(() => {
+    fetchNews();
+  }, []);
   return (
     <>
       <div sx={{ padding: '1rem', pt: 0, mt: 0 }}>
@@ -31,7 +37,7 @@ function relatedlyViewed() {
             alignItems: 'center',
           }}
         >
-          <Heading> Related</Heading>
+          <Heading>Related</Heading>
         </div>
         <Divider />
         <div
@@ -41,7 +47,6 @@ function relatedlyViewed() {
             overflowY: 'scroll',
             scrollbarWidth: 'none',
             '::-webkit-scrollbar': { width: 0 },
-
             padding: '1rem',
             height: '26vh',
           }}
@@ -57,4 +62,4 @@ function relatedlyViewed() {
   );
 }
 
-export default relatedlyViewed;
+export default RelatedArticles;
