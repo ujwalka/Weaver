@@ -7,8 +7,9 @@ import logout from '../../../redux/actionCreators/logout';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button } from 'theme-ui';
 import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
+import ArrowBackIosOutlinedIcon from '@material-ui/icons/ArrowBackIosOutlined';
 
-function DashNav() {
+function DashNav({ strawPage, articlePage }) {
   const dispatch = useDispatch();
   // @ts-ignore
   const { user } = useSelector((state) => state.authenticationReducer);
@@ -33,17 +34,36 @@ function DashNav() {
         zIndex: 100,
       }}
     >
-      <div
-        sx={{
-          ml: 3,
-          pointer: 'cursor',
-        }}
-        onClick={() => router.push('/dashboard')}
-      >
-        <h1 sx={{ textShadow: '#bfbfbf 1px 0 3px' }}>
-          <b sx={{ cursor: 'pointer' }}>Weaver</b>
-        </h1>
-      </div>
+      {strawPage || articlePage ? (
+        <>
+          <div
+            sx={{
+              ml: 3,
+              mt: 2,
+              pointer: 'cursor',
+            }}
+            onClick={() => router.back()}
+          >
+            <div sx={{ cursor: 'pointer' }}>
+              <ArrowBackIosOutlinedIcon />
+            </div>
+          </div>
+        </>
+      ) : (
+        <>
+          <div
+            sx={{
+              ml: 3,
+              pointer: 'cursor',
+            }}
+            onClick={() => router.push('/dashboard')}
+          >
+            <h1 sx={{ textShadow: '#bfbfbf 1px 0 3px' }}>
+              <b sx={{ cursor: 'pointer' }}>Weaver</b>
+            </h1>
+          </div>
+        </>
+      )}
       <div sx={{}}>
         <Button
           sx={{

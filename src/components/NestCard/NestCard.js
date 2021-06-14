@@ -9,6 +9,7 @@ import { truncate } from 'lodash';
 function NestCard({ nest }) {
   const [articles, setArticles] = useState(null);
   const [lastWarble, setLastWarble] = useState('');
+  console.log(articles);
   useEffect(() => {
     (async () => {
       const { articles } = await strawApi.getAllArticles(nest._id);
@@ -50,7 +51,11 @@ function NestCard({ nest }) {
               display: 'flex',
             }}
           >
-            {nest.notes ? <Text sx={{ mr: 2 }}>{lastWarble}</Text> : null}
+            {lastWarble ? (
+              <Text sx={{ mr: 2 }}>{lastWarble}</Text>
+            ) : (
+              <Text sx={{ mr: 2 }}>No Warbles on this Nest</Text>
+            )}
           </Card>
           <Divider />
           <div>
@@ -58,9 +63,11 @@ function NestCard({ nest }) {
               Recently added
               <Divider />
             </Heading>
-            {articles
-              ? articles.map((article) => <NewsCard news={article} />)
-              : null}
+            {articles && articles.length ? (
+              articles.map((article) => <NewsCard news={article} />)
+            ) : (
+              <Text sx={{ mr: 2 }}>Nest Empty</Text>
+            )}
           </div>
         </Card>
       </>

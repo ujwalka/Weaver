@@ -12,7 +12,7 @@ function BranchPage() {
     <>
       {/* navbar to dashboard*/}
       {/* nests */}
-      <DashNav />
+      <DashNav strawPage={false} articlePage={false} />
       <div sx={{ display: 'flex' }}>
         <div sx={{ flex: 2 }}>
           <NestList />

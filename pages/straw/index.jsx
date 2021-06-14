@@ -9,7 +9,7 @@ import RelatedArticles from '../../src/components/RelatedArticles/RelatedArticle
 function StrawPage() {
   return (
     <>
-      <DashNav />
+      <DashNav strawPage={true} />
       {/* article */}
       {/* chirps */}
       {/* Related articles, do a search with description string */}

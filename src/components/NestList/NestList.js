@@ -10,6 +10,7 @@ import { useRouter } from 'next/router';
 import NestCard from '../NestCard/NestCard';
 import addToCurrentNest from '../../../redux/actionCreators/addToCurrentNest';
 import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
+import { yellow } from '@material-ui/core/colors';
 
 function NestList() {
   const [description, setDescription] = useState('');
@@ -140,7 +141,15 @@ function NestList() {
             </>
           ))
         ) : (
-          <Spinner />
+          <div
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+            }}
+          >
+            <Spinner sx={{ ml: 450, mt: 300 }} />
+          </div>
         )}
       </div>
     </>

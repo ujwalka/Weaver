@@ -5,7 +5,7 @@ import NewsArticle from '../../src/components/NewsArticle/NewsArticle';
 function ArticlePage() {
   return (
     <>
-      <DashNav />
+      <DashNav strawPage={true} articlePage={false} />
       <NewsArticle />
     </>
   );
