@@ -36,8 +36,6 @@ function Dashboard() {
     })();
   }, []);
 
-  console.log(isAuthenticated);
-
   return (
     <>
       {isAuthenticated ? (

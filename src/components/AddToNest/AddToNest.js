@@ -12,28 +12,25 @@ function AddToNest({ article }) {
   const [nests, setNests] = useState(null);
   const [userId, setUserId] = useState('');
   const router = useRouter();
-
   useEffect(() => {
     const email = localStorage.getItem('email');
     (async () => {
       if (email) {
         // @ts-ignore
-        const { userId } = await authenticationApi.getUser({ email });
+        const { userId } = await authenticationApi.getUser(email);
         setUserId(userId);
         const { nest } = await nestApi.getAllNests(userId);
-        setNests(nest);
+        setNests(nest.reverse());
       } else {
         router.push('/');
       }
     })();
   }, [userId]);
   const handleClick = async (nest) => {
-    console.log(nest, typeof JSON.stringify(article));
     const postedArticle = await strawApi.createArticle(
       JSON.stringify(article),
       nest._id
     );
-    console.log(postedArticle);
     alert('Article added');
   };
 
@@ -67,6 +64,7 @@ function AddToNest({ article }) {
         {nests
           ? nests.map((nest) => (
               <option
+                key={nest._id}
                 onClick={() => {
                   handleClick(nest);
                 }}

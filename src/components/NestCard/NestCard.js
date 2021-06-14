@@ -9,7 +9,6 @@ import { truncate } from 'lodash';
 function NestCard({ nest }) {
   const [articles, setArticles] = useState(null);
   const [lastWarble, setLastWarble] = useState('');
-  console.log(articles);
   useEffect(() => {
     (async () => {
       const { articles } = await strawApi.getAllArticles(nest._id);

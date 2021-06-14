@@ -17,18 +17,22 @@ function NestList() {
   const [userId, setUserId] = useState('');
   // @ts-ignore
   const { user } = useSelector((state) => state.authenticationReducer);
+  console.log(user);
   const router = useRouter();
   const dispatch = useDispatch();
   useEffect(() => {
     (async () => {
       if (user.email) {
         // @ts-ignore
-        const { userId } = await authenticationApi.getUser({
-          email: user.email,
-        });
+        const { userId } = await authenticationApi.getUser(user.email);
         setUserId(userId);
-        const { nest } = await nestApi.getAllNests(userId);
-        setNests(nest);
+        console.log(userId, 'from nest list');
+        if (userId) {
+          const { nest } = await nestApi.getAllNests(userId);
+          if (nest) {
+            setNests(nest.reverse());
+          }
+        }
       } else {
         router.push('/');
       }
@@ -40,7 +44,7 @@ function NestList() {
     if (userId) {
       await nestApi.createNest(description, userId);
       const { nest } = await nestApi.getAllNests(userId);
-      setNests(nest);
+      setNests(nest.reverse());
     } else {
       router.push('/');
     }
@@ -51,7 +55,7 @@ function NestList() {
     if (userId) {
       await nestApi.deleteNest(nestId, userId);
       const { nest } = await nestApi.getAllNests(userId);
-      setNests(nest);
+      setNests(nest.reverse());
     } else {
       router.push('/');
     }
@@ -81,7 +85,12 @@ function NestList() {
             }}
           />
           <Button
-            sx={{ bg: 'black', height: '2.5rem', ml: '.5rem' }}
+            sx={{
+              bg: 'black',
+              height: '2.5rem',
+              ml: '.5rem',
+              cursor: 'pointer',
+            }}
             type='submit'
           >
             Create Nest
@@ -101,6 +110,7 @@ function NestList() {
           nests.map((nest) => (
             <>
               <div
+                key={nest._id}
                 sx={{
                   display: 'flex',
                   justifyContent: 'space-between',
@@ -127,6 +137,7 @@ function NestList() {
                       height: '2.5rem',
                       alignItems: 'center',
                       display: 'flex',
+                      cursor: 'pointer',
                     }}
                   >
                     <DeleteOutlineOutlinedIcon />

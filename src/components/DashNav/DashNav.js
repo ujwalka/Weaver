@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import authenticationApi from '../../apiServices/authenticationApi';
 import logout from '../../../redux/actionCreators/logout';
@@ -8,12 +8,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Button } from 'theme-ui';
 import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
 import ArrowBackIosOutlinedIcon from '@material-ui/icons/ArrowBackIosOutlined';
+import { startCase } from 'lodash';
 
 function DashNav({ strawPage, articlePage }) {
   const dispatch = useDispatch();
+  const router = useRouter();
+  const [sessionUser, setSessionUser] = useState('');
   // @ts-ignore
   const { user } = useSelector((state) => state.authenticationReducer);
-  const router = useRouter();
+  useEffect(() => {
+    (async () => {
+      const { name } = await authenticationApi.getUser(user.email);
+      setSessionUser(startCase(name));
+    })();
+  }, []);
+
   const handleClick = async () => {
     await authenticationApi.logout('accessToken');
     dispatch(logout());
@@ -75,7 +84,7 @@ function DashNav({ strawPage, articlePage }) {
           }}
           onClick={myBranchHandleClick}
         >
-          <b>MyBranch</b>
+          {sessionUser ? <b>{sessionUser}'s Nests</b> : <b>My Nests</b>}
         </Button>
         <Button
           sx={{

@@ -23,6 +23,7 @@ function NewsList({ news, SearchNews, onBranch }) {
         {news.map((article) => (
           <>
             <Card
+              key={article.url}
               sx={{
                 borderRadius: '3',
                 padding: '.5rem',

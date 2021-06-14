@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Register from '../../src/components/Register/Register';
-import { Label, Input, Button, Text, Card } from 'theme-ui';
 
 function Page() {
   return (

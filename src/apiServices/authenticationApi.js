@@ -52,7 +52,7 @@ authenticationApi.getUser = (email) => {
     credentials: 'include',
     mode: 'cors',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(email),
+    body: JSON.stringify({ email }),
   })
     .then((res) => res.json())
     .catch((err) => console.log(err));

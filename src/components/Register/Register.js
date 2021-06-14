@@ -32,12 +32,19 @@ function Register() {
     const { email, password, name } = state;
     const user = { email, password, name: name.trim() };
     // get allusers, if the email exists don't register
-    const res = await authenticationApi.register(user);
-    if (res.error) {
-      alert(`${res.message}`);
-      setState(initialState);
+    // get user from email
+    const userExists = await authenticationApi.getUser(email);
+    if (!userExists) {
+      const res = await authenticationApi.register(user);
+      if (res.error) {
+        alert(`${res.message}`);
+        setState(initialState);
+      } else {
+        router.push('/');
+      }
     } else {
-      router.push('/');
+      alert('User already exists');
+      setState(initialState);
     }
   };
 
