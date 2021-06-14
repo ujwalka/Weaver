@@ -9,14 +9,12 @@ import RecentlyViewed from '../../src/components/RecentlyViewed/RecentlyViewed';
 function NestPage() {
   return (
     <>
-      <DashNav />
+      <DashNav strawPage={false} articlePage={false} />
       <div sx={{ display: 'flex' }}>
         <div sx={{ flex: 1.5 }}>
           <StrawList />
         </div>
         <div sx={{ flex: 1 }}>
-          {/* notesList */}
-          {/* add to notes */}
           <div
             sx={{
               display: 'flex',
@@ -29,7 +27,6 @@ function NestPage() {
           </div>
         </div>
       </div>
-      {/* notes, description */}
     </>
   );
 }

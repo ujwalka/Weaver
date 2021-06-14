@@ -13,7 +13,6 @@ function NestTextArea() {
   const { currentNestId } = useSelector((state) => state.nestReducer);
   useEffect(() => {
     (async () => {
-      //  get warbles, set warbles
       console.log('id from effect', currentNestId);
       const { notes } = await nestApi.getAllNestNotes(currentNestId);
       setWarbles(notes.reverse());
@@ -31,7 +30,6 @@ function NestTextArea() {
     setWarbles(notes.reverse());
   };
 
-  // save from text area into the nest notes
   return (
     <>
       <div
@@ -57,7 +55,11 @@ function NestTextArea() {
         }}
       >
         {/* Note */}
-        {warbles ? warbles.map((warble) => <p>{warble}</p>) : <p>No warbles</p>}
+        {warbles ? (
+          warbles.map((warble, index) => <p key={index}>{warble}</p>)
+        ) : (
+          <p>No warbles</p>
+        )}
       </div>
       <form
         sx={{

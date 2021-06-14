@@ -54,7 +54,11 @@ function TopNews() {
           }}
         >
           {componentTopNews ? (
-            <NewsList news={componentTopNews} SearchNews={false} />
+            <NewsList
+              news={componentTopNews}
+              onBranch={false}
+              SearchNews={false}
+            />
           ) : (
             <div
               sx={{

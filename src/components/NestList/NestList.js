@@ -92,7 +92,7 @@ function NestList() {
       <div
         sx={{
           overflow: 'scroll',
-          height: '82vh',
+          height: '53vh',
           '::-webkit-scrollbar': { width: 0 },
           scrollbarWidth: 'none',
         }}
@@ -105,12 +105,14 @@ function NestList() {
                   display: 'flex',
                   justifyContent: 'space-between',
                   alignItems: 'center',
+                  bg: 'black',
+                  color: 'white',
+                  borderRadius: 3,
+                  ml: 2,
                 }}
               >
-                <div sx={{ mt: 20, ml: 15 }}>
-                  <Heading as='h2' mb={2}>
-                    {nest.description}
-                  </Heading>
+                <div sx={{ ml: 15 }}>
+                  <Heading as='h2'>{nest.description}</Heading>
                 </div>
                 <div
                   sx={{
@@ -125,17 +127,16 @@ function NestList() {
                       height: '2.5rem',
                       alignItems: 'center',
                       display: 'flex',
-                      mr: '.5rem',
-                      mt: '.5rem',
                     }}
                   >
                     <DeleteOutlineOutlinedIcon />
                   </Button>
                 </div>
               </div>
-              <Divider />
               <div sx={{ pointer: 'cursor' }} onClick={() => handleClick(nest)}>
-                <div>{nest ? <NestCard nest={nest} /> : null}</div>
+                <div>
+                  {nest ? <NestCard key={nest._id} nest={nest} /> : null}
+                </div>
               </div>
             </>
           ))

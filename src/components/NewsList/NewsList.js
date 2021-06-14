@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useRouter } from 'next/router';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import addToCurrentArticle from '../../../redux/actionCreators/addToCurrentArticle';
 import NewsCard from '../NewsCard/NewsCard';
 import AddToNest from '../AddToNest/AddToNest';
@@ -10,15 +10,11 @@ import { Card, Divider, Flex, Heading } from 'theme-ui';
 import addToRecentlyViewed from '../../../redux/actionCreators/addToRecentlyViewed';
 
 function NewsList({ news, SearchNews, onBranch }) {
-  // const state = useSelector((state) => state);
-  // console.log(state);
   const dispatch = useDispatch();
   const router = useRouter();
   const handleClick = (article) => {
     dispatch(addToCurrentArticle(article));
     dispatch(addToRecentlyViewed(article));
-    // add to recent news
-    // add to nest button
     router.push('/article');
   };
   return (
@@ -29,7 +25,7 @@ function NewsList({ news, SearchNews, onBranch }) {
             <Card
               sx={{
                 borderRadius: '3',
-                padding: '1rem',
+                padding: '.5rem',
                 borderColor: 'border',
                 boxShadow: '0 4px 4px -4px rgba(255,255,255,.1)',
                 display: 'flex',

@@ -19,16 +19,14 @@ function NestCard({ nest }) {
       const articlesUniq = uniqWith(articleList, isEqual);
       setArticles(articlesUniq.reverse().slice(-3));
 
-      // get all warbles, pick the last one
       const { notes } = await nestApi.getAllNestNotes(nest._id);
       const lastCompleteWarble = notes.slice(-1);
       setLastWarble(
         truncate(lastCompleteWarble, {
-          length: 130,
+          length: 110,
           separator: /,? +/,
         })
       );
-      // set last warble
     })();
   }, []);
 
@@ -39,8 +37,7 @@ function NestCard({ nest }) {
           sx={{
             borderRadius: '3',
             padding: '1rem',
-            borderColor: 'border',
-            boxShadow: '4px 4px 4px -4px rgba(0,0,0,.3)',
+            boxShadow: '4px 4px 4px -4px rgba(0,0,0,1)',
             display: 'flex',
             flexDirection: 'column',
             cursor: 'pointer',
@@ -52,17 +49,13 @@ function NestCard({ nest }) {
             }}
           >
             {lastWarble ? (
-              <Text sx={{ mr: 2 }}>{lastWarble}</Text>
+              <Text>{lastWarble}</Text>
             ) : (
-              <Text sx={{ mr: 2 }}>No Warbles on this Nest</Text>
+              <Text>No Warbles on this Nest</Text>
             )}
           </Card>
-          <Divider />
           <div>
-            <Heading as='h3' sx={{ mb: 3 }}>
-              Recently added
-              <Divider />
-            </Heading>
+            <Divider />
             {articles && articles.length ? (
               articles.map((article) => <NewsCard news={article} />)
             ) : (

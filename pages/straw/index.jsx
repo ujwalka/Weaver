@@ -9,17 +9,12 @@ import RelatedArticles from '../../src/components/RelatedArticles/RelatedArticle
 function StrawPage() {
   return (
     <>
-      <DashNav strawPage={true} />
-      {/* article */}
-      {/* chirps */}
-      {/* Related articles, do a search with description string */}
+      <DashNav strawPage={true} articlePage={false} />
       <div sx={{ display: 'flex' }}>
         <div sx={{ flex: 1.5 }}>
           <StrawArticle />
         </div>
         <div sx={{ flex: 1 }}>
-          {/* notesList */}
-          {/* add to notes */}
           <div
             sx={{
               display: 'flex',

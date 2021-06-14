@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
 
-import router, { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import MockNewsContent from '../MockNewsContent/MockNewsContent';
@@ -8,7 +8,6 @@ import { Spinner, Heading, Image, Text, Card } from 'theme-ui';
 import { padding } from 'styled-system';
 import AddToNest from '../AddToNest/AddToNest';
 function NewsArticle() {
-  // add to nest button
   const router = useRouter();
 
   // @ts-ignore
@@ -20,10 +19,6 @@ function NewsArticle() {
     <>
       {currentArticle ? (
         <>
-          {/* title */}
-          {/* image */}
-          {/* content */}
-          {/* link */}
           <Card
             sx={{
               boxShadow: '0 4px 4px -4px rgba(0,0,0,.5)',
@@ -51,17 +46,14 @@ function NewsArticle() {
               src={currentArticle.urlToImage}
               sx={{ height: '20rem', float: 'left', padding: '1rem' }}
             />
-          ) : (
-            <></>
-          )}
+          ) : null}
 
-          {/* truncated news article */}
           <div sx={{ pl: '1rem', pr: '1rem' }}>
             <MockNewsContent />
           </div>
         </>
       ) : (
-        <Spinner />
+        <Spinner variant='styles.spinner' />
       )}
     </>
   );

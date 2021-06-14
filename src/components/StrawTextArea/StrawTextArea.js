@@ -52,7 +52,11 @@ function StrawTextArea() {
         }}
       >
         {/* Note */}
-        {chirps ? chirps.map((chirp) => <p>{chirp}</p>) : <p>No chirps</p>}
+        {chirps ? (
+          chirps.map((chirp, index) => <p key={index}>{chirp}</p>)
+        ) : (
+          <p>No chirps</p>
+        )}
       </div>
       <form
         sx={{

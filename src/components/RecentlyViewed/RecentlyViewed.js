@@ -39,7 +39,7 @@ function RecentlyViewed() {
             '::-webkit-scrollbar': { width: 0 },
 
             padding: '1rem',
-            height: '26vh',
+            height: '20vh',
           }}
         >
           {recent ? (

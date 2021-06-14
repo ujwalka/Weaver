@@ -57,6 +57,7 @@ function StrawList() {
         ? straws.map((straw) => (
             <>
               <div
+                key={straw._id}
                 sx={{ pointer: 'cursor' }}
                 onClick={() => handleClick(straw)}
               >

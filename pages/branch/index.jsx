@@ -12,8 +12,9 @@ function BranchPage() {
     <>
       <DashNav strawPage={false} articlePage={false} />
       <div sx={{ display: 'flex' }}>
-        <div sx={{ flex: 2 }}>
+        <div sx={{ flex: 1.3 }}>
           <NestList />
+          <RecentlyViewed />
         </div>
         <div sx={{ flex: 1 }}>
           <SearchNews onBranch={true} />

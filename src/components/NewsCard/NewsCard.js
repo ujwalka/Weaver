@@ -16,7 +16,7 @@ function NewsCard({ news, SearchNews, onBranch }) {
             src={news.urlToImage}
             sx={{
               height: '100%',
-              pr: '1rem',
+              pr: '.5rem',
               flex: 2,
             }}
           />
