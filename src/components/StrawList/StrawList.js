@@ -22,13 +22,21 @@ function StrawList() {
     (async () => {
       const { articles } = await strawApi.getAllArticles(currentNestId);
 
-      const articleList = articles.map(({ newsArticle }) =>
-        JSON.parse(newsArticle)
+      const articleList = articles.map((article) => {
+        return {
+          _id: article._id,
+          parsedStraw: JSON.parse(article.newsArticle),
+        };
+      });
+      console.log(articleList);
+      const articlesUniq = uniqWith(
+        articleList,
+        (object, other) => object.parsedStraw === other.parsedStraw
       );
-      const articlesUniq = uniqWith(articleList, isEqual);
+      console.log(articlesUniq);
       setStraws(articlesUniq);
     })();
-  }, [straws]);
+  }, []);
 
   const handleClick = (straw) => {
     dispatch(addToCurrentStraw(straw));

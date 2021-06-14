@@ -1,30 +1,58 @@
 /** @jsxImportSource theme-ui */
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Input, Button, Heading, Divider } from '@theme-ui/components';
 import { useSelector } from 'react-redux';
+import strawApi from '../../apiServices/strawApi';
 
-function NestTextArea() {
+function StrawTextArea() {
   // @ts-ignore
-  const { currentNestId } = useSelector((state) => state.nestReducer);
-
-  // save from text area into the nest notes
+  const [chirp, setChirp] = useState('');
+  const [chirps, setChirps] = useState([]);
+  // @ts-ignore
+  const { currentStraw } = useSelector((state) => state.strawReducer);
+  useEffect(() => {
+    (async () => {
+      //  get chirps, set chirps
+      const { notes } = await strawApi.getAllStrawNotes(currentStraw._id);
+      setChirps(notes.reverse());
+    })();
+  }, []);
+  const handleChange = (e) => {
+    setChirp(e.target.value);
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await strawApi.postStrawNote(currentStraw._id, chirp);
+    const { notes } = await strawApi.getAllStrawNotes(currentStraw._id);
+    setChirps(notes.reverse());
+  };
   return (
     <>
-      <div sx={{ height: '47vh', mb: 2 }}>
+      <div
+        sx={{
+          padding: '.5rem',
+          display: 'flex',
+          flexDirection: 'column',
+        }}
+      >
+        <Heading>Chirps</Heading>
+        <Divider />
+      </div>
+
+      <div
+        sx={{
+          height: '39vh',
+          mb: 2,
+          padding: '0.5rem',
+          overflow: 'scroll',
+          overflowAnchor: 'none',
+          scrollbarWidth: 'none',
+          '::-webkit-scrollbar': { width: 0 },
+        }}
+      >
         {/* Note */}
-        <div>
-          <div
-            sx={{
-              padding: '1rem',
-              display: 'flex',
-              flexDirection: 'column',
-            }}
-          >
-            <Heading> Chirps</Heading>
-            <Divider />
-          </div>
-        </div>
+        {chirps ? chirps.map((chirp) => <p>{chirp}</p>) : <p>No chirps</p>}
       </div>
       <form
         sx={{
@@ -32,14 +60,28 @@ function NestTextArea() {
           alignItems: 'center',
           justifyContent: 'space-between',
         }}
+        onSubmit={handleSubmit}
       >
         <div sx={{ mr: 1, flex: 4 }}>
-          <Input sx={{}} />
+          <Input
+            type='text'
+            name='chirp'
+            id='chirp'
+            value={chirp}
+            onChange={handleChange}
+            required
+            sx={{}}
+          />
         </div>
-        <Button sx={{ bg: 'black', flex: 1 }}> Chirp</Button>
+        <Button
+          sx={{ bg: 'black', height: '2.5rem', flex: 1, cursor: 'pointer' }}
+          type='submit'
+        >
+          Chirp
+        </Button>
       </form>
     </>
   );
 }
 
-export default NestTextArea;
+export default StrawTextArea;

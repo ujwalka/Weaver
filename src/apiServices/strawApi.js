@@ -29,7 +29,7 @@ strawApi.createArticle = (newsArticle, nestId) => {
     .catch((err) => console.log(err));
 };
 
-strawApi.postNote = (articleId, note) => {
+strawApi.postStrawNote = (articleId, note) => {
   // const { articleId, note } = req.body;
   return fetch(`${BASE_URL}/straw/note`, {
     method: 'POST',
@@ -38,10 +38,20 @@ strawApi.postNote = (articleId, note) => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ articleId, note }),
   })
-    .then((res) => res.json())
+    .then()
     .catch((err) => console.log(err));
 };
 
+strawApi.getAllStrawNotes = (strawId) => {
+  return fetch(`${BASE_URL}/straw/notes/${strawId}`, {
+    method: 'GET',
+    credentials: 'include',
+    mode: 'cors',
+    headers: { 'Content-Type': 'application/json' },
+  })
+    .then((res) => res.json())
+    .catch((err) => console.log(err));
+};
 strawApi.deleteArticle = (nestId, articleId) => {
   // const { nestId, articleId } = req.body;
   return fetch(`${BASE_URL}/straw`, {

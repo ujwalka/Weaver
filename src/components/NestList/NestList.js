@@ -148,7 +148,7 @@ function NestList() {
               justifyContent: 'center',
             }}
           >
-            <Spinner sx={{ ml: 450, mt: 300 }} />
+            <Spinner variant='styles.spinner' sx={{ ml: 450, mt: 300 }} />
           </div>
         )}
       </div>

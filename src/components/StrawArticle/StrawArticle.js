@@ -5,24 +5,21 @@ import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import MockNewsContent from '../MockNewsContent/MockNewsContent';
 import { Spinner, Heading, Image, Text, Card } from 'theme-ui';
-import AddToNest from '../AddToNest/AddToNest';
+
 function StrawArticle() {
   // add to nest button
   const router = useRouter();
 
   // @ts-ignore
   const { currentStraw } = useSelector((state) => state.strawReducer);
+  const { parsedStraw } = currentStraw;
   useEffect(() => {
     if (!currentStraw) router.push('/dashboard');
   }, []);
   return (
     <>
-      {currentStraw ? (
+      {parsedStraw ? (
         <>
-          {/* title */}
-          {/* image */}
-          {/* content */}
-          {/* link */}
           <Card
             sx={{
               boxShadow: '0 4px 4px -4px rgba(0,0,0,.5)',
@@ -37,9 +34,9 @@ function StrawArticle() {
             >
               <a
                 sx={{ textDecoration: 'none', color: 'black' }}
-                href={currentStraw.url}
+                href={parsedStraw.url}
               >
-                <Heading> {currentStraw.title}</Heading>
+                <Heading> {parsedStraw.title}</Heading>
               </a>
             </div>
           </Card>
@@ -51,16 +48,15 @@ function StrawArticle() {
               '::-webkit-scrollbar': { width: 0 },
             }}
           >
-            {currentStraw.urlToImage ? (
+            {parsedStraw.urlToImage ? (
               <Image
-                src={currentStraw.urlToImage}
+                src={parsedStraw.urlToImage}
                 sx={{ height: '20rem', float: 'left', padding: '1rem' }}
               />
             ) : (
               <></>
             )}
 
-            {/* truncated news article */}
             <div sx={{ pl: '1rem', pr: '1rem' }}>
               <MockNewsContent />
             </div>

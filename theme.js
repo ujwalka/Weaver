@@ -22,6 +22,9 @@ const theme = {
   },
   styles: {
     ...roboto.styles,
+    spinner: {
+      color: 'black',
+    },
   },
 };
 

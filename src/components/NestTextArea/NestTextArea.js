@@ -16,7 +16,7 @@ function NestTextArea() {
       //  get warbles, set warbles
       console.log('id from effect', currentNestId);
       const { notes } = await nestApi.getAllNestNotes(currentNestId);
-      setWarbles(notes);
+      setWarbles(notes.reverse());
     })();
   }, []);
   const handleChange = (e) => {
@@ -28,7 +28,7 @@ function NestTextArea() {
     await nestApi.postNestNote(currentNestId, warble);
     console.log(currentNestId, warble);
     const { notes } = await nestApi.getAllNestNotes(currentNestId);
-    setWarbles(notes);
+    setWarbles(notes.reverse());
   };
 
   // save from text area into the nest notes
