@@ -8,14 +8,13 @@ import NewsList from '../NewsList/NewsList';
 import { uniqWith, isEqual } from 'lodash';
 import { Text } from 'theme-ui';
 
-// _.uniqWith(objects, _.isEqual);
-
 function RecentlyViewed() {
   const [recent, setRecent] = useState(null);
+  // @ts-ignore
   const { recentlyViewed } = useSelector((state) => state.newsReducer);
   useEffect(() => {
     const recentlyViewedUniq = uniqWith(recentlyViewed, isEqual);
-    setRecent(recentlyViewedUniq);
+    setRecent(recentlyViewedUniq.reverse());
   }, []);
   return (
     <>
@@ -44,7 +43,7 @@ function RecentlyViewed() {
           }}
         >
           {recent ? (
-            <NewsList news={recent} RecentViews={true} SearchNews={false} />
+            <NewsList news={recent} onBranch={false} SearchNews={false} />
           ) : (
             <Text> No Recent articles</Text>
           )}
