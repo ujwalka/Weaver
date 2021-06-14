@@ -10,20 +10,15 @@ import { Heading } from 'theme-ui';
 function BranchPage() {
   return (
     <>
-      {/* navbar to dashboard*/}
-      {/* nests */}
       <DashNav strawPage={false} articlePage={false} />
       <div sx={{ display: 'flex' }}>
         <div sx={{ flex: 2 }}>
           <NestList />
         </div>
-
         <div sx={{ flex: 1 }}>
-          {/* quick search */}
           <SearchNews onBranch={true} />
         </div>
       </div>
-      {/* recent searches */}
     </>
   );
 }

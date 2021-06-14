@@ -24,19 +24,6 @@ authenticationApi.login = (user) => {
     .then((res) => res.json())
     .catch((err) => console.log(err));
 };
-authenticationApi.profile = (accessToken) => {
-  return fetch(`${BASE_URL}/me`, {
-    method: 'GET',
-    credentials: 'include',
-    mode: 'cors',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${accessToken}`,
-    },
-  })
-    .then((res) => res.json())
-    .catch((err) => console.log(err));
-};
 
 authenticationApi.logout = (tokenName) => {
   localStorage.removeItem(tokenName);

@@ -1,14 +1,14 @@
 /** @jsxImportSource theme-ui */
 
 import React from 'react';
-import { Box, Card, Heading, Image, Text, Divider } from '@theme-ui/components';
+import { Box, Card, Heading, Image, Divider } from '@theme-ui/components';
 
+import Chirps from '../Chirps/Chirps';
 function StrawCard({ straw }) {
   const { parsedStraw } = straw;
+
   return (
     <div>
-      {/* strawCard with notes */}
-      {/* straw article */}
       <Card
         sx={{
           display: 'flex',
@@ -43,10 +43,9 @@ function StrawCard({ straw }) {
             {parsedStraw.title}
           </Heading>
           <Divider />
-          <Text mb={3}>Chirps here</Text>
+          <Chirps strawId={straw._id} />
         </Box>
       </Card>
-      {/* chirps */}
     </div>
   );
 }
