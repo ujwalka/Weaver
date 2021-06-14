@@ -13,6 +13,11 @@ const authenticationReducer = (state = initialAuthState, action) => {
         ...state,
         isAuthenticated: true,
       };
+    case 'SET_IS_NOT_AUTHENTICATED':
+      return {
+        ...state,
+        isAuthenticated: false,
+      };
     case 'UPDATE_USER':
       return {
         ...state,
