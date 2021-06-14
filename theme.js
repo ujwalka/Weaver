@@ -25,6 +25,9 @@ const theme = {
     spinner: {
       color: 'black',
     },
+    whiteSpinner: {
+      color: 'white',
+    },
   },
 };
 

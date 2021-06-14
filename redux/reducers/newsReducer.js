@@ -12,6 +12,11 @@ const newsReducer = (state = initalNewsState, action) => {
         ...state,
         recentlyViewed: [...state.recentlyViewed, action.payload],
       };
+    case 'ADD_TO_TOP_NEWS':
+      return {
+        ...state,
+        recentlyViewed: action.payload,
+      };
 
     default:
       return state;

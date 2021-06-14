@@ -6,11 +6,26 @@ import useFetchNews from '../../../hooks/useFetchNews';
 import NewsCard from '../NewsCard/NewsCard';
 import NewsList from '../NewsList/NewsList';
 import { mockNews } from '../../../mockNews';
+import { useSelector } from 'react-redux';
 
 function TopNews() {
-  // const topNews = useFetchNews(
-  //   'https://newsapi.org/v2/top-headlines?country=us&apiKey=de672c5dc9894971ba8967feb68e7431'
-  // );
+  const [componentTopNews, setComponentTopNews] = useState(null);
+  const { topNews } = useSelector((state) => state.newsReducer);
+
+  const url =
+    'https://newsapi.org/v2/top-headlines?country=us&apiKey=de672c5dc9894971ba8967feb68e7431';
+  const fetchNews = async () => {
+    if (topNews.length) {
+      setComponentTopNews(topNews);
+    } else {
+      const res = await fetch(url);
+      const newsResults = await res.json();
+      setComponentTopNews(newsResults.articles);
+    }
+  };
+  useEffect(() => {
+    fetchNews();
+  }, [url]);
   return (
     <>
       <div sx={{ padding: '1rem', pt: 0, mt: 0 }}>
@@ -38,11 +53,20 @@ function TopNews() {
             padding: '1rem',
           }}
         >
-          {mockNews.articles ? (
-            <NewsList news={mockNews.articles || topNews} SearchNews={false} />
+          {componentTopNews ? (
+            <NewsList news={componentTopNews} SearchNews={false} />
           ) : (
-            <div sx={{ justifyContent: 'space-around' }}>
-              <Spinner />
+            <div
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+              }}
+            >
+              <Spinner
+                variant='styles.whiteSpinner'
+                sx={{ ml: 250, mt: 150 }}
+              />
             </div>
           )}
         </div>

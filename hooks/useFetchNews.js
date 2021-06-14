@@ -9,6 +9,6 @@ export default function useFetchNews(url) {
       setNews(newsResults.articles);
     };
     fetchNews();
-  }, [news, url]);
+  }, [url]);
   return news;
 }

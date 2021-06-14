@@ -10,7 +10,6 @@ import { useRouter } from 'next/router';
 import NestCard from '../NestCard/NestCard';
 import addToCurrentNest from '../../../redux/actionCreators/addToCurrentNest';
 import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
-import { yellow } from '@material-ui/core/colors';
 
 function NestList() {
   const [description, setDescription] = useState('');
