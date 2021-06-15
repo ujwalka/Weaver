@@ -15,9 +15,7 @@ const initialState = {
 function Login() {
   const [state, setState] = useState(initialState);
   const router = useRouter();
-
   const dispatch = useDispatch();
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setState((prevState) => ({

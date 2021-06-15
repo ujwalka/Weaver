@@ -12,7 +12,9 @@ import { motion } from 'framer-motion';
 import BackButton from '../BackButton/BackButton';
 function DashNav({ strawPage, articlePage }) {
   const dispatch = useDispatch();
+  const [route, setRoute] = useState('');
   const router = useRouter();
+
   const [sessionUser, setSessionUser] = useState('');
   // @ts-ignore
   const { user } = useSelector((state) => state.authenticationReducer);
@@ -21,6 +23,7 @@ function DashNav({ strawPage, articlePage }) {
       const { name } = await authenticationApi.getUser(user.email);
       setSessionUser(startCase(name));
     })();
+    setRoute(startCase(router.route.substring(1)));
   }, []);
 
   const handleClick = async () => {
@@ -86,6 +89,18 @@ function DashNav({ strawPage, articlePage }) {
           </motion.div>
         </>
       )}
+      <div>
+        {route ? (
+          <h1
+            sx={{
+              ml: '7rem',
+              color: '#0a0a0a',
+            }}
+          >
+            <b sx={{ cursor: 'pointer' }}>{route}</b>
+          </h1>
+        ) : null}
+      </div>
       <div sx={{ display: 'flex' }}>
         <motion.div
           initial='hidden'

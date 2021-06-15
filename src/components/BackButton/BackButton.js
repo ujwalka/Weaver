@@ -4,10 +4,10 @@ import React from 'react';
 import ArrowBackIosOutlinedIcon from '@material-ui/icons/ArrowBackIosOutlined';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
+import { startCase } from 'lodash';
 
 function BackButton() {
   const router = useRouter();
-
   return (
     <motion.div
       whileHover={{
