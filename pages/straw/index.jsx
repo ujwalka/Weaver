@@ -20,7 +20,7 @@ function StrawPage() {
               <div sx={{ flex: 1.5 }}>
                 <StrawArticle />
               </div>
-              <div sx={{ flex: 1 }}>
+              <div sx={{ flex: 1.2 }}>
                 <div
                   sx={{
                     display: 'flex',
