@@ -33,7 +33,7 @@ function NewsArticle() {
               }}
             >
               <a
-                sx={{ textDecoration: 'none', color: 'black' }}
+                sx={{ textDecoration: 'none', color: 'white' }}
                 href={currentArticle.url}
               >
                 <Heading> {currentArticle.title}</Heading>
@@ -41,15 +41,24 @@ function NewsArticle() {
               <AddToNest article={currentArticle} />
             </div>
           </Card>
-          {currentArticle.urlToImage ? (
-            <Image
-              src={currentArticle.urlToImage}
-              sx={{ height: '20rem', float: 'left', padding: '1rem' }}
-            />
-          ) : null}
+          <div
+            sx={{
+              height: '52.6vh',
+              overflow: 'scroll',
+              scrollbarWidth: 'none',
+              '::-webkit-scrollbar': { width: 0 },
+            }}
+          >
+            {currentArticle.urlToImage ? (
+              <Image
+                src={currentArticle.urlToImage}
+                sx={{ height: '20rem', float: 'left', padding: '1rem' }}
+              />
+            ) : null}
 
-          <div sx={{ pl: '1rem', pr: '1rem' }}>
-            <MockNewsContent />
+            <div sx={{ pl: '1rem', pr: '1rem' }}>
+              <MockNewsContent />
+            </div>
           </div>
         </>
       ) : (

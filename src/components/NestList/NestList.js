@@ -8,8 +8,8 @@ import authenticationApi from '../../apiServices/authenticationApi';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import NestCard from '../NestCard/NestCard';
+import DeleteButton from '../DeleteButton/DeleteButton';
 import addToCurrentNest from '../../../redux/actionCreators/addToCurrentNest';
-import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
 import { motion } from 'framer-motion';
 function NestList() {
   const [description, setDescription] = useState('');
@@ -17,7 +17,6 @@ function NestList() {
   const [userId, setUserId] = useState('');
   // @ts-ignore
   const { user } = useSelector((state) => state.authenticationReducer);
-  console.log(user);
   const router = useRouter();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -26,7 +25,6 @@ function NestList() {
         // @ts-ignore
         const { userId } = await authenticationApi.getUser(user.email);
         setUserId(userId);
-        console.log(userId, 'from nest list');
         if (userId) {
           const { nest } = await nestApi.getAllNests(userId);
           if (nest) {
@@ -70,7 +68,7 @@ function NestList() {
   return (
     <>
       <div sx={{ ml: 3, mt: 2, mr: 3 }}>
-        <form action='submit' onSubmit={handleSubmit}>
+        <form action='submit' onSubmit={handleSubmit} sx={{ display: 'flex' }}>
           <input
             type='text'
             name='description'
@@ -80,21 +78,46 @@ function NestList() {
             placeholder='Add Description'
             required
             sx={{
+              bg: '#0a0a0a',
+              color: 'white',
+              borderRadius: 4,
               height: '2.5rem',
               width: '75%',
             }}
           />
-          <Button
-            sx={{
-              bg: 'black',
-              height: '2.5rem',
-              ml: '.5rem',
-              cursor: 'pointer',
+          <motion.div
+            whileHover={{
+              scale: 0.9,
+              transition: {
+                duration: 0.3,
+              },
             }}
-            type='submit'
+            whileTap={{ scale: 0.8 }}
+            initial='hidden'
+            animate='visible'
+            variants={{
+              hidden: { scale: 0.8, opacity: 0 },
+              visible: {
+                scale: 1,
+                opacity: 1,
+                transition: {
+                  delay: 0.3,
+                },
+              },
+            }}
           >
-            Create Nest
-          </Button>
+            <Button
+              sx={{
+                bg: 'black',
+                height: '2.5rem',
+                ml: '.5rem',
+                cursor: 'pointer',
+              }}
+              type='submit'
+            >
+              Create Nest
+            </Button>
+          </motion.div>
         </form>
       </div>
       <Divider />
@@ -125,29 +148,10 @@ function NestList() {
                   <Heading as='h2'>{nest.description}</Heading>
                 </div>
 
-                <motion.div
-                  whileHover={{
-                    scale: 1.05,
-                    transition: {
-                      duration: 0.2,
-                    },
-                  }}
-                  sx={{
-                    pointer: 'cursor',
-                  }}
-                  onClick={() => handleDeleteClick(nest)}
-                >
-                  <Button
-                    sx={{
-                      bg: 'black',
-                      alignItems: 'center',
-                      display: 'flex',
-                      cursor: 'pointer',
-                    }}
-                  >
-                    <DeleteOutlineOutlinedIcon />
-                  </Button>
-                </motion.div>
+                <DeleteButton
+                  handleClick={handleDeleteClick}
+                  component={nest}
+                />
               </div>
               <div sx={{ pointer: 'cursor' }} onClick={() => handleClick(nest)}>
                 <motion.div
@@ -174,7 +178,7 @@ function NestList() {
               justifyContent: 'center',
             }}
           >
-            <Spinner variant='styles.spinner' sx={{ ml: 450, mt: 200 }} />
+            <Spinner variant='styles.whiteSpinner' sx={{ ml: 430, mt: 170 }} />
           </div>
         )}
       </div>

@@ -7,7 +7,6 @@ import MockNewsContent from '../MockNewsContent/MockNewsContent';
 import { Spinner, Heading, Image, Text, Card } from 'theme-ui';
 
 function StrawArticle() {
-  // add to nest button
   const router = useRouter();
 
   // @ts-ignore
@@ -33,7 +32,7 @@ function StrawArticle() {
               }}
             >
               <a
-                sx={{ textDecoration: 'none', color: 'black' }}
+                sx={{ textDecoration: 'none', color: 'white' }}
                 href={parsedStraw.url}
               >
                 <Heading> {parsedStraw.title}</Heading>

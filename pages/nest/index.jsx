@@ -14,21 +14,23 @@ function NestPage() {
     <>
       {isAuthenticated ? (
         <>
-          <DashNav strawPage={false} articlePage={false} />
-          <div sx={{ display: 'flex' }}>
-            <div sx={{ flex: 1.5 }}>
-              <StrawList />
-            </div>
-            <div sx={{ flex: 1 }}>
-              <div
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  padding: 2,
-                }}
-              >
-                <NestTextArea />
-                <RecentlyViewed />
+          <div sx={{ bg: '#0a0a0a', color: 'white' }}>
+            <DashNav strawPage={false} articlePage={false} />
+            <div sx={{ display: 'flex' }}>
+              <div sx={{ flex: 1.5 }}>
+                <StrawList />
+              </div>
+              <div sx={{ flex: 1 }}>
+                <div
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    padding: 2,
+                  }}
+                >
+                  <NestTextArea />
+                  <RecentlyViewed />
+                </div>
               </div>
             </div>
           </div>

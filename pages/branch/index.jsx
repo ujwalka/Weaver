@@ -14,14 +14,16 @@ function BranchPage() {
     <>
       {isAuthenticated ? (
         <>
-          <DashNav strawPage={false} articlePage={false} />
-          <div sx={{ display: 'flex' }}>
-            <div sx={{ flex: 1.3 }}>
-              <NestList />
-              <RecentlyViewed />
-            </div>
-            <div sx={{ flex: 1 }}>
-              <SearchNews onBranch={true} />
+          <div sx={{ bg: '#0a0a0a', color: 'white' }}>
+            <DashNav strawPage={false} articlePage={false} />
+            <div sx={{ display: 'flex' }}>
+              <div sx={{ flex: 1.3 }}>
+                <NestList />
+                <RecentlyViewed />
+              </div>
+              <div sx={{ flex: 1 }}>
+                <SearchNews onBranch={true} />
+              </div>
             </div>
           </div>
         </>

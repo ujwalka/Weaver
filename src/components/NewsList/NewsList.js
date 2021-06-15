@@ -74,7 +74,6 @@ function NewsList({ news, SearchNews, onBranch }) {
                 </div>
               </Card>
             </motion.div>
-            {onBranch ? <Divider /> : null}
           </>
         ))}
       </div>

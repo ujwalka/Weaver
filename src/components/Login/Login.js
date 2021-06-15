@@ -127,19 +127,40 @@ function Login() {
         </Text>
 
         <div>
-          <Button
-            sx={{
-              paddingTop: '0.5rem',
-              bg: 'black',
-              mb: 2,
-              boxShadow: '0 6px 6px -4px rgba(50,50,50,1)',
-              cursor: 'pointer',
+          <motion.div
+            whileHover={{
+              scale: 0.9,
+              transition: {
+                duration: 0.3,
+              },
             }}
-            type='submit'
-            disabled={validateForm()}
+            whileTap={{ scale: 0.8 }}
+            initial='hidden'
+            animate='visible'
+            variants={{
+              hidden: { scale: 0.8, opacity: 0 },
+              visible: {
+                scale: 1,
+                opacity: 1,
+                transition: {
+                  delay: 0.3,
+                },
+              },
+            }}
           >
-            Login
-          </Button>
+            <Button
+              sx={{
+                paddingTop: '0.5rem',
+                bg: 'black',
+                mb: 2,
+                cursor: 'pointer',
+              }}
+              type='submit'
+              disabled={validateForm()}
+            >
+              Login
+            </Button>
+          </motion.div>
         </div>
       </form>
     </Card>

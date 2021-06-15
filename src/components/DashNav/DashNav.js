@@ -46,18 +46,40 @@ function DashNav({ strawPage, articlePage }) {
     >
       {strawPage || articlePage ? (
         <>
-          <div
-            sx={{
-              ml: 3,
-              mt: 2,
-              pointer: 'cursor',
+          <motion.div
+            whileHover={{
+              scale: 0.9,
+              transition: {
+                duration: 0.3,
+              },
             }}
-            onClick={() => router.back()}
+            whileTap={{ scale: 0.8 }}
+            initial='hidden'
+            animate='visible'
+            variants={{
+              hidden: { scale: 0.8, opacity: 0 },
+              visible: {
+                scale: 1,
+                opacity: 1,
+                transition: {
+                  delay: 0.3,
+                },
+              },
+            }}
           >
-            <div sx={{ cursor: 'pointer' }}>
-              <ArrowBackIosOutlinedIcon />
+            <div
+              sx={{
+                ml: 3,
+                mt: 2,
+                pointer: 'cursor',
+              }}
+              onClick={() => router.back()}
+            >
+              <div sx={{ cursor: 'pointer' }}>
+                <ArrowBackIosOutlinedIcon />
+              </div>
             </div>
-          </div>
+          </motion.div>
         </>
       ) : (
         <>
@@ -105,6 +127,7 @@ function DashNav({ strawPage, articlePage }) {
               duration: 0.1,
             },
           }}
+          whileTap={{ scale: 0.8 }}
           variants={{
             hidden: { scale: 0.8, opacity: 0 },
             visible: {
@@ -136,6 +159,7 @@ function DashNav({ strawPage, articlePage }) {
               duration: 0.3,
             },
           }}
+          whileTap={{ scale: 0.8 }}
           initial='hidden'
           animate='visible'
           variants={{

@@ -14,21 +14,23 @@ function StrawPage() {
     <>
       {isAuthenticated ? (
         <>
-          <DashNav strawPage={true} articlePage={false} />
-          <div sx={{ display: 'flex' }}>
-            <div sx={{ flex: 1.5 }}>
-              <StrawArticle />
-            </div>
-            <div sx={{ flex: 1 }}>
-              <div
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  padding: 2,
-                }}
-              >
-                <StrawTextArea />
-                <RelatedArticles />
+          <div sx={{ bg: '#0a0a0a', color: 'white' }}>
+            <DashNav strawPage={true} articlePage={false} />
+            <div sx={{ display: 'flex' }}>
+              <div sx={{ flex: 1.5 }}>
+                <StrawArticle />
+              </div>
+              <div sx={{ flex: 1 }}>
+                <div
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    padding: 2,
+                  }}
+                >
+                  <StrawTextArea />
+                  <RelatedArticles />
+                </div>
               </div>
             </div>
           </div>

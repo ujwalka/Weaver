@@ -61,18 +61,20 @@ function AddToNest({ article }) {
         }
         defaultValue=''
       >
-        {nests
-          ? nests.map((nest) => (
-              <option
-                key={nest._id}
-                onClick={() => {
-                  handleClick(nest);
-                }}
-              >
-                {nest.description}
-              </option>
-            ))
-          : null}
+        {nests && nests.length ? (
+          nests.map((nest) => (
+            <option
+              key={nest._id}
+              onClick={() => {
+                handleClick(nest);
+              }}
+            >
+              {nest.description}
+            </option>
+          ))
+        ) : (
+          <option>No Nests</option>
+        )}
       </Select>
     </>
   );

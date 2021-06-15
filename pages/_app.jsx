@@ -17,7 +17,7 @@ export default function MyApp({ Component, pageProps, router }) {
       animate='pageAnimate'
       variants={{
         pageInitial: {
-          opacity: 0.9,
+          opacity: 0.7,
         },
         pageAnimate: {
           opacity: 1,

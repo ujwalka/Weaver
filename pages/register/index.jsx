@@ -10,7 +10,7 @@ function Page() {
         sx={{
           width: '100vw',
           height: '100vh',
-          bg: 'black',
+          bg: '#0a0a0a',
           color: 'white',
         }}
       >

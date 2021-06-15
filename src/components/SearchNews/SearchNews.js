@@ -5,7 +5,7 @@ import NewsList from '../NewsList/NewsList';
 import { Button, Divider, Input } from 'theme-ui';
 import { mockNews } from '../../../mockNews';
 import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
-
+import { motion } from 'framer-motion';
 const initialState = '';
 
 function SearchNews({ onBranch }) {
@@ -71,17 +71,39 @@ function SearchNews({ onBranch }) {
                     }}
                   />
                 )}
-                <Button
-                  sx={{
-                    bg: 'black',
-                    height: '2.5rem',
-                    ml: 2,
-                    cursor: 'pointer',
+                <motion.div
+                  whileHover={{
+                    scale: 0.9,
+                    transition: {
+                      duration: 0.3,
+                    },
                   }}
-                  type='submit'
+                  whileTap={{ scale: 0.8 }}
+                  initial='hidden'
+                  animate='visible'
+                  variants={{
+                    hidden: { scale: 0.8, opacity: 0 },
+                    visible: {
+                      scale: 1,
+                      opacity: 1,
+                      transition: {
+                        delay: 0.3,
+                      },
+                    },
+                  }}
                 >
-                  <SearchOutlinedIcon />
-                </Button>
+                  <Button
+                    sx={{
+                      bg: 'black',
+                      height: '2.5rem',
+                      ml: 2,
+                      cursor: 'pointer',
+                    }}
+                    type='submit'
+                  >
+                    <SearchOutlinedIcon />
+                  </Button>
+                </motion.div>
               </div>
             </form>
           </div>
