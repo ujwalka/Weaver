@@ -7,6 +7,7 @@ import strawApi from '../../apiServices/strawApi';
 import { uniqWith } from 'lodash';
 import StrawCard from '../StrawCard/StrawCard';
 import addToCurrentStraw from '../../../redux/actionCreators/addToCurrentStraw';
+import DeleteButton from '../DeleteButton/DeleteButton';
 import { Text } from 'theme-ui';
 import { motion } from 'framer-motion';
 function StrawList() {
@@ -16,27 +17,30 @@ function StrawList() {
   // @ts-ignore
   const { currentNestId } = useSelector((state) => state.nestReducer);
 
-  // delete articles
-  // add redirecion onclick to straw page
+  const setAllArticles = async () => {
+    const { articles } = await strawApi.getAllArticles(currentNestId);
+
+    const articleList = articles.map((article) => {
+      return {
+        _id: article._id,
+        parsedStraw: JSON.parse(article.newsArticle),
+      };
+    });
+    const articlesUniq = uniqWith(
+      articleList,
+      (object, other) => object.parsedStraw === other.parsedStraw
+    );
+    setStraws(articlesUniq.reverse());
+  };
 
   useEffect(() => {
-    (async () => {
-      const { articles } = await strawApi.getAllArticles(currentNestId);
-
-      const articleList = articles.map((article) => {
-        return {
-          _id: article._id,
-          parsedStraw: JSON.parse(article.newsArticle),
-        };
-      });
-      const articlesUniq = uniqWith(
-        articleList,
-        (object, other) => object.parsedStraw === other.parsedStraw
-      );
-      setStraws(articlesUniq.reverse());
-    })();
+    setAllArticles();
   }, []);
 
+  const handleDeleteClick = async (straw) => {
+    await strawApi.deleteArticle(currentNestId, straw._id);
+    setAllArticles();
+  };
   const handleClick = (straw) => {
     dispatch(addToCurrentStraw(straw));
     router.push('/straw');
@@ -55,6 +59,27 @@ function StrawList() {
       {straws && straws.length ? (
         straws.map((straw) => (
           <>
+            {straw._id ? (
+              <div
+                key={straw._id}
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  bg: 'black',
+                  color: 'white',
+                  borderRadius: 3,
+                  ml: 2,
+                }}
+              >
+                <div></div>
+
+                <DeleteButton
+                  handleClick={handleDeleteClick}
+                  component={straw}
+                />
+              </div>
+            ) : null}
             <motion.div
               key={straw._id}
               whileHover={{
