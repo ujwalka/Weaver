@@ -10,7 +10,7 @@ import { useRouter } from 'next/router';
 import NestCard from '../NestCard/NestCard';
 import addToCurrentNest from '../../../redux/actionCreators/addToCurrentNest';
 import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
-
+import { motion } from 'framer-motion';
 function NestList() {
   const [description, setDescription] = useState('');
   const [nests, setNests] = useState(null);
@@ -69,7 +69,7 @@ function NestList() {
   };
   return (
     <>
-      <div sx={{ ml: 3, mt: 2 }}>
+      <div sx={{ ml: 3, mt: 2, mr: 3 }}>
         <form action='submit' onSubmit={handleSubmit}>
           <input
             type='text'
@@ -124,17 +124,22 @@ function NestList() {
                 <div sx={{ ml: 15 }}>
                   <Heading as='h2'>{nest.description}</Heading>
                 </div>
-                <div
+
+                <motion.div
+                  whileHover={{
+                    scale: 1.05,
+                    transition: {
+                      duration: 0.2,
+                    },
+                  }}
                   sx={{
                     pointer: 'cursor',
-                    mt: 1,
                   }}
                   onClick={() => handleDeleteClick(nest)}
                 >
                   <Button
                     sx={{
                       bg: 'black',
-                      height: '2.5rem',
                       alignItems: 'center',
                       display: 'flex',
                       cursor: 'pointer',
@@ -142,12 +147,22 @@ function NestList() {
                   >
                     <DeleteOutlineOutlinedIcon />
                   </Button>
-                </div>
+                </motion.div>
               </div>
               <div sx={{ pointer: 'cursor' }} onClick={() => handleClick(nest)}>
-                <div>
-                  {nest ? <NestCard key={nest._id} nest={nest} /> : null}
-                </div>
+                <motion.div
+                  key={nest._id}
+                  whileHover={{
+                    scale: 0.995,
+                    transition: {
+                      duration: 0.2,
+                    },
+                  }}
+                >
+                  <div>
+                    {nest ? <NestCard key={nest._id} nest={nest} /> : null}
+                  </div>
+                </motion.div>
               </div>
             </>
           ))
@@ -159,7 +174,7 @@ function NestList() {
               justifyContent: 'center',
             }}
           >
-            <Spinner variant='styles.spinner' sx={{ ml: 450, mt: 300 }} />
+            <Spinner variant='styles.spinner' sx={{ ml: 450, mt: 200 }} />
           </div>
         )}
       </div>

@@ -9,6 +9,7 @@ import { Button } from 'theme-ui';
 import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
 import ArrowBackIosOutlinedIcon from '@material-ui/icons/ArrowBackIosOutlined';
 import { startCase } from 'lodash';
+import { motion } from 'framer-motion';
 
 function DashNav({ strawPage, articlePage }) {
   const dispatch = useDispatch();
@@ -60,47 +61,110 @@ function DashNav({ strawPage, articlePage }) {
         </>
       ) : (
         <>
-          <div
-            sx={{
-              ml: 3,
-              pointer: 'cursor',
+          <motion.div
+            initial='hidden'
+            animate='visible'
+            whileHover={{
+              scale: 0.9,
+              transition: {
+                duration: 0.1,
+              },
             }}
-            onClick={() => router.push('/dashboard')}
+            variants={{
+              hidden: { scale: 0.8, opacity: 0 },
+              visible: {
+                scale: 1,
+                opacity: 1,
+                transition: {
+                  delay: 0.4,
+                },
+              },
+            }}
           >
-            <h1 sx={{ textShadow: '#bfbfbf 1px 0 3px' }}>
-              <b sx={{ cursor: 'pointer' }}>Weaver</b>
-            </h1>
-          </div>
+            <div
+              sx={{
+                ml: 3,
+                pointer: 'cursor',
+              }}
+              onClick={() => router.push('/dashboard')}
+            >
+              <h1 sx={{ textShadow: '#bfbfbf 1px 0 3px' }}>
+                <b sx={{ cursor: 'pointer' }}>Weaver</b>
+              </h1>
+            </div>
+          </motion.div>
         </>
       )}
-      <div sx={{}}>
-        <Button
-          sx={{
-            mr: 3,
-            color: 'white',
-            bg: 'black',
-            fontSize: '1.2rem',
-            cursor: 'pointer',
+      <div sx={{ display: 'flex' }}>
+        <motion.div
+          initial='hidden'
+          animate='visible'
+          whileHover={{
+            scale: 0.9,
+            transition: {
+              duration: 0.1,
+            },
           }}
-          onClick={myBranchHandleClick}
-        >
-          {sessionUser ? <b>{sessionUser}'s Nests</b> : <b>My Nests</b>}
-        </Button>
-        <Button
-          sx={{
-            mr: 3,
-            color: 'white',
-            bg: 'black',
-            cursor: 'pointer',
-            fontSize: '1.2rem',
+          variants={{
+            hidden: { scale: 0.8, opacity: 0 },
+            visible: {
+              scale: 1,
+              opacity: 1,
+              transition: {
+                delay: 0.1,
+              },
+            },
           }}
-          onClick={handleClick}
         >
-          <b sx={{ alignItems: 'center', display: 'flex' }}>
-            <div sx={{ mr: 1 }}>Logout</div>
-            <ExitToAppOutlinedIcon />
-          </b>
-        </Button>
+          <Button
+            sx={{
+              mr: 3,
+              color: 'white',
+              bg: 'black',
+              fontSize: '1.2rem',
+              cursor: 'pointer',
+            }}
+            onClick={myBranchHandleClick}
+          >
+            {sessionUser ? <b>{sessionUser}'s Nests</b> : <b>My Nests</b>}
+          </Button>
+        </motion.div>
+        <motion.div
+          whileHover={{
+            scale: 0.9,
+            transition: {
+              duration: 0.3,
+            },
+          }}
+          initial='hidden'
+          animate='visible'
+          variants={{
+            hidden: { scale: 0.8, opacity: 0 },
+            visible: {
+              scale: 1,
+              opacity: 1,
+              transition: {
+                delay: 0.3,
+              },
+            },
+          }}
+        >
+          <Button
+            sx={{
+              mr: 3,
+              color: 'white',
+              bg: 'black',
+              cursor: 'pointer',
+              fontSize: '1.2rem',
+            }}
+            onClick={handleClick}
+          >
+            <b sx={{ alignItems: 'center', display: 'flex' }}>
+              <div sx={{ mr: 1 }}>Logout</div>
+              <ExitToAppOutlinedIcon />
+            </b>
+          </Button>
+        </motion.div>
       </div>
     </div>
   );

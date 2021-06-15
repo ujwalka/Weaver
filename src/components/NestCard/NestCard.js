@@ -22,7 +22,7 @@ function NestCard({ nest }) {
       const lastCompleteWarble = notes.slice(-1);
       setLastWarble(
         truncate(lastCompleteWarble, {
-          length: 110,
+          length: 100,
           separator: /,? +/,
         })
       );

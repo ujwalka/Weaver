@@ -37,12 +37,11 @@ function RecentlyViewed() {
             overflowY: 'scroll',
             scrollbarWidth: 'none',
             '::-webkit-scrollbar': { width: 0 },
-
             padding: '1rem',
             height: '20vh',
           }}
         >
-          {recent ? (
+          {recent && recent.length ? (
             <NewsList news={recent} onBranch={false} SearchNews={false} />
           ) : (
             <Text> No Recent articles</Text>

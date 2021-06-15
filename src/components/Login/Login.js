@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import login from '../../../redux/actionCreators/login';
 import { useRouter } from 'next/router';
 import { Label, Input, Button, Text, Card, Divider } from 'theme-ui';
-
+import { motion } from 'framer-motion';
 const initialState = {
   email: '',
   password: '',
@@ -53,22 +53,36 @@ function Login() {
       sx={{
         width: '30vw',
         margin: 'auto',
-
         borderRadius: '3',
         borderColor: 'border',
       }}
     >
-      <div
-        sx={{
-          alignItems: 'center',
-          display: 'flex',
-          height: '4rem',
-          flexDirection: 'column',
-          padding: 1,
+      <motion.div
+        initial='hidden'
+        animate='visible'
+        variants={{
+          hidden: { scale: 0.8, opacity: 0 },
+          visible: {
+            scale: 1,
+            opacity: 1,
+            transition: {
+              delay: 0.4,
+            },
+          },
         }}
       >
-        <h1 sx={{ textShadow: '#bfbfbf 1px 0 3px' }}>Weaver</h1>
-      </div>
+        <div
+          sx={{
+            alignItems: 'center',
+            display: 'flex',
+            height: '4rem',
+            flexDirection: 'column',
+            padding: 1,
+          }}
+        >
+          <h1 sx={{ textShadow: '#bfbfbf 1px 0 2px' }}>Weaver</h1>
+        </div>
+      </motion.div>
       <Divider />
       <form
         sx={{

@@ -1,10 +1,9 @@
 /** @jsxImportSource theme-ui */
 
 import React, { useEffect, useState } from 'react';
-import { Input, Button, Heading, Divider } from '@theme-ui/components';
+import { Input, Button, Heading, Divider, Text } from '@theme-ui/components';
 import { useSelector } from 'react-redux';
 import nestApi from '../../apiServices/nestApi';
-import { lowerFirst } from 'lodash';
 
 function NestTextArea() {
   const [warble, setWarble] = useState('');
@@ -55,10 +54,15 @@ function NestTextArea() {
         }}
       >
         {/* Note */}
-        {warbles ? (
-          warbles.map((warble, index) => <p key={index}>{warble}</p>)
+        {warbles.length ? (
+          warbles.map((warble, index) => (
+            <div key={index}>
+              <Text as='h3'>{warble}</Text>
+              <Divider />
+            </div>
+          ))
         ) : (
-          <p>No warbles</p>
+          <Text> No Recent Warbles</Text>
         )}
       </div>
       <form

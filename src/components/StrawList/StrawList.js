@@ -4,10 +4,11 @@ import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import strawApi from '../../apiServices/strawApi';
-import { uniqWith, isEqual } from 'lodash';
+import { uniqWith } from 'lodash';
 import StrawCard from '../StrawCard/StrawCard';
 import addToCurrentStraw from '../../../redux/actionCreators/addToCurrentStraw';
-
+import { Text } from 'theme-ui';
+import { motion } from 'framer-motion';
 function StrawList() {
   const [straws, setStraws] = useState(null);
   const dispatch = useDispatch();
@@ -28,7 +29,6 @@ function StrawList() {
           parsedStraw: JSON.parse(article.newsArticle),
         };
       });
-      console.log(articleList);
       const articlesUniq = uniqWith(
         articleList,
         (object, other) => object.parsedStraw === other.parsedStraw
@@ -53,19 +53,31 @@ function StrawList() {
         scrollbarWidth: 'none',
       }}
     >
-      {straws
-        ? straws.map((straw) => (
-            <>
+      {straws && straws.length ? (
+        straws.map((straw) => (
+          <>
+            <motion.div
+              key={straw._id}
+              whileHover={{
+                scale: [1, 0.9, 0.95],
+                rotate: [0, 0.4, -0.4, 0],
+                transition: {
+                  duration: 0.2,
+                },
+              }}
+            >
               <div
-                key={straw._id}
                 sx={{ pointer: 'cursor' }}
                 onClick={() => handleClick(straw)}
               >
                 <StrawCard straw={straw} />
               </div>
-            </>
-          ))
-        : null}
+            </motion.div>
+          </>
+        ))
+      ) : (
+        <Text as='h2'> No Saved Articles</Text>
+      )}
     </div>
   );
 }
