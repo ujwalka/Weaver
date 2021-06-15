@@ -51,10 +51,10 @@ function RelatedArticles() {
             height: '26vh',
           }}
         >
-          {related ? (
+          {related && related.length ? (
             <NewsList news={related} onBranch={false} SearchNews={false} />
           ) : (
-            <Text> No related articles</Text>
+            <Text as='h2'> No related articles</Text>
           )}
         </div>
       </div>
