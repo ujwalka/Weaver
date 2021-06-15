@@ -8,7 +8,7 @@ import { uniqWith } from 'lodash';
 import StrawCard from '../StrawCard/StrawCard';
 import addToCurrentStraw from '../../../redux/actionCreators/addToCurrentStraw';
 import DeleteButton from '../DeleteButton/DeleteButton';
-import { Text } from 'theme-ui';
+import { Text, Heading } from 'theme-ui';
 import { motion } from 'framer-motion';
 function StrawList() {
   const [straws, setStraws] = useState(null);
@@ -72,7 +72,11 @@ function StrawList() {
                   ml: 2,
                 }}
               >
-                <div></div>
+                <div>
+                  <Heading as='h3' sx={{ padding: 2 }}>
+                    {straw.parsedStraw.title}
+                  </Heading>
+                </div>
 
                 <DeleteButton
                   handleClick={handleDeleteClick}
