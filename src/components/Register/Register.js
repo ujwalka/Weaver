@@ -31,8 +31,7 @@ function Register() {
     e.preventDefault();
     const { email, password, name } = state;
     const user = { email, password, name: name.trim() };
-    // get allusers, if the email exists don't register
-    // get user from email
+
     const userExists = await authenticationApi.getUser(email);
     if (!userExists) {
       const res = await authenticationApi.register(user);
@@ -58,7 +57,6 @@ function Register() {
         sx={{
           width: '30vw',
           margin: 'auto',
-
           borderRadius: '3',
           borderColor: 'border',
         }}
@@ -139,12 +137,12 @@ function Register() {
           </Text>
           <motion.div
             whileHover={{
-              scale: 0.9,
+              scale: 1.1,
               transition: {
-                duration: 0.3,
+                duration: 0.1,
               },
             }}
-            whileTap={{ scale: 0.8 }}
+            whileTap={{ scale: 1 }}
             initial='hidden'
             animate='visible'
             variants={{
@@ -153,7 +151,7 @@ function Register() {
                 scale: 1,
                 opacity: 1,
                 transition: {
-                  delay: 0.3,
+                  delay: 0.1,
                 },
               },
             }}

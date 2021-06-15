@@ -48,7 +48,9 @@ function NestCard({ nest }) {
             }}
           >
             {lastWarble ? (
-              <Text>{lastWarble}</Text>
+              <Text sx={{ wordWrap: 'break-word' }} as='h4'>
+                {lastWarble}
+              </Text>
             ) : (
               <Text>No Warbles on this Nest</Text>
             )}

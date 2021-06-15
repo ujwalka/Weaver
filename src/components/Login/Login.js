@@ -129,12 +129,12 @@ function Login() {
         <div>
           <motion.div
             whileHover={{
-              scale: 0.9,
+              scale: 1.1,
               transition: {
-                duration: 0.3,
+                duration: 0.1,
               },
             }}
-            whileTap={{ scale: 0.8 }}
+            whileTap={{ scale: 1 }}
             initial='hidden'
             animate='visible'
             variants={{

@@ -8,8 +8,7 @@ function DeleteButton({ handleClick, component }) {
   return (
     <motion.div
       whileHover={{
-        scale: 1.1,
-        rotate: [0, 5, -5, 0],
+        rotate: [0, 10, -10, 0],
         transition: {
           duration: 0.2,
         },

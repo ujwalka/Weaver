@@ -49,7 +49,6 @@ function StrawList() {
         padding: '1rem',
         height: '92vh',
         '::-webkit-scrollbar': { width: 0 },
-
         scrollbarWidth: 'none',
       }}
     >
@@ -59,19 +58,18 @@ function StrawList() {
             <motion.div
               key={straw._id}
               whileHover={{
-                scale: [1, 0.9, 0.95],
-                rotate: [0, 0.4, -0.4, 0],
+                scale: 0.99,
                 transition: {
-                  duration: 0.2,
+                  duration: 0.1,
                 },
               }}
+              whileTap={{
+                scale: 0.96,
+              }}
+              sx={{ pointer: 'cursor' }}
+              onClick={() => handleClick(straw)}
             >
-              <div
-                sx={{ pointer: 'cursor' }}
-                onClick={() => handleClick(straw)}
-              >
-                <StrawCard straw={straw} />
-              </div>
+              <StrawCard straw={straw} />
             </motion.div>
           </>
         ))

@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import NewsList from '../NewsList/NewsList';
-import { Button, Divider, Input } from 'theme-ui';
+import { Button, Divider, Input, Text } from 'theme-ui';
 import { mockNews } from '../../../mockNews';
 import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 import { motion } from 'framer-motion';
@@ -73,12 +73,12 @@ function SearchNews({ onBranch }) {
                 )}
                 <motion.div
                   whileHover={{
-                    scale: 0.9,
+                    scale: 0.94,
                     transition: {
-                      duration: 0.3,
+                      duration: 0.1,
                     },
                   }}
-                  whileTap={{ scale: 0.8 }}
+                  whileTap={{ scale: 0.9 }}
                   initial='hidden'
                   animate='visible'
                   variants={{
@@ -118,14 +118,14 @@ function SearchNews({ onBranch }) {
           }}
         >
           <div sx={{}}>
-            {searchedNews || mockNews.articles ? (
+            {(searchedNews && searchedNews.length) || mockNews.articles ? (
               <NewsList
                 news={searchedNews || mockNews.articles}
                 SearchNews={true}
                 onBranch={onBranch}
               />
             ) : (
-              <p>No search results</p>
+              <Text as='h2'> No Search Results</Text>
             )}
           </div>
         </div>

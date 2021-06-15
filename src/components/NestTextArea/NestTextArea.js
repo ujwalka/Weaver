@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { Input, Button, Heading, Divider, Text } from '@theme-ui/components';
 import { useSelector } from 'react-redux';
 import nestApi from '../../apiServices/nestApi';
+import { motion } from 'framer-motion';
 
 function NestTextArea() {
   const [warble, setWarble] = useState('');
@@ -46,17 +47,24 @@ function NestTextArea() {
         sx={{
           height: '39vh',
           mb: 2,
+          wordWrap: 'break-word',
           padding: '0.5rem',
           overflow: 'scroll',
-          overflowAnchor: 'none',
           scrollbarWidth: 'none',
           '::-webkit-scrollbar': { width: 0 },
         }}
       >
-        {/* Note */}
         {warbles.length ? (
           warbles.map((warble, index) => (
-            <div key={index}>
+            <div
+              key={index}
+              sx={{
+                wordWrap: 'break-word',
+                overflowWrap: 'break-word',
+                hyphens: 'auto',
+                maxWidth: '40rem',
+              }}
+            >
               <Text as='h3'>{warble}</Text>
               <Divider />
             </div>
@@ -73,7 +81,7 @@ function NestTextArea() {
         }}
         onSubmit={handleSubmit}
       >
-        <div sx={{ mr: 1, flex: 4 }}>
+        <div sx={{ mr: 2, flex: 4 }}>
           <Input
             type='text'
             name='warble'
@@ -88,7 +96,17 @@ function NestTextArea() {
           sx={{ bg: 'black', height: '2.5rem', flex: 1, cursor: 'pointer' }}
           type='submit'
         >
-          Warble
+          <motion.div
+            whileHover={{
+              scale: 0.94,
+              transition: {
+                duration: 0.1,
+              },
+            }}
+            whileTap={{ scale: 0.9 }}
+          >
+            <b>Warble</b>
+          </motion.div>
         </Button>
       </form>
     </>

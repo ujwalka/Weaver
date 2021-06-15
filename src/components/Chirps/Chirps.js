@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import strawApi from '../../apiServices/strawApi';
-import { useSelector } from 'react-redux';
 import { truncate } from 'lodash';
-import { Text } from 'theme-ui';
+import { Text, Divider } from 'theme-ui';
 function Chirps({ strawId }) {
   const [chirps, setChirps] = useState([]);
   useEffect(() => {
     (async () => {
       // get all chirps, pick the last one
       const { notes } = await strawApi.getAllStrawNotes(strawId);
-      const truncatedChirps = notes.slice(-3).map((chirp) =>
+      const truncatedChirps = notes.slice(-4).map((chirp) =>
         truncate(chirp, {
-          length: 130,
+          length: 70,
           separator: /,? +/,
         })
       );
@@ -20,14 +19,18 @@ function Chirps({ strawId }) {
   }, []);
   return (
     <div>
-      {chirps
-        ? chirps.map((chirp) => (
-            <div>
-              {' '}
-              <Text mb={3}>{chirp} </Text>{' '}
-            </div>
-          ))
-        : null}
+      {chirps && chirps.length ? (
+        chirps.map((chirp) => (
+          <div>
+            {' '}
+            <Text as='h4' mb={2}>
+              {chirp}{' '}
+            </Text>
+          </div>
+        ))
+      ) : (
+        <Text mb={3}> No Chirps </Text>
+      )}
     </div>
   );
 }

@@ -13,7 +13,7 @@ function TopNews() {
   const { topNews } = useSelector((state) => state.newsReducer);
 
   const url =
-    'https://newsapi.org/v2/top-headlines?country=us&apiKey=de672c5dc9894971ba8967feb68e7431';
+    'https://newsapi.org/v2/top-headlines?country=us&apiKey=b26889f5e0904196a980c316d40f6e76';
   const fetchNews = async () => {
     if (topNews.length) {
       setComponentTopNews(topNews);
@@ -53,9 +53,10 @@ function TopNews() {
             padding: '1rem',
           }}
         >
-          {componentTopNews ? (
+          {(componentTopNews && componentTopNews.length) ||
+          mockNews.articles ? (
             <NewsList
-              news={componentTopNews}
+              news={componentTopNews || mockNews.articles}
               onBranch={false}
               SearchNews={false}
             />

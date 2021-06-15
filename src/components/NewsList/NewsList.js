@@ -53,11 +53,13 @@ function NewsList({ news, SearchNews, onBranch }) {
               <motion.div
                 key={article.url}
                 whileHover={{
-                  scale: [1, 0.9, 0.9],
-                  rotate: [0, 0.3, -0.3, 0],
+                  scale: 0.99,
                   transition: {
-                    duration: 0.2,
+                    duration: 0.1,
                   },
+                }}
+                whileTap={{
+                  scale: 0.96,
                 }}
               >
                 <div

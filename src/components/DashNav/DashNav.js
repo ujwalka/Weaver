@@ -7,10 +7,9 @@ import logout from '../../../redux/actionCreators/logout';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button } from 'theme-ui';
 import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
-import ArrowBackIosOutlinedIcon from '@material-ui/icons/ArrowBackIosOutlined';
 import { startCase } from 'lodash';
 import { motion } from 'framer-motion';
-
+import BackButton from '../BackButton/BackButton';
 function DashNav({ strawPage, articlePage }) {
   const dispatch = useDispatch();
   const router = useRouter();
@@ -46,40 +45,7 @@ function DashNav({ strawPage, articlePage }) {
     >
       {strawPage || articlePage ? (
         <>
-          <motion.div
-            whileHover={{
-              scale: 0.9,
-              transition: {
-                duration: 0.3,
-              },
-            }}
-            whileTap={{ scale: 0.8 }}
-            initial='hidden'
-            animate='visible'
-            variants={{
-              hidden: { scale: 0.8, opacity: 0 },
-              visible: {
-                scale: 1,
-                opacity: 1,
-                transition: {
-                  delay: 0.3,
-                },
-              },
-            }}
-          >
-            <div
-              sx={{
-                ml: 3,
-                mt: 2,
-                pointer: 'cursor',
-              }}
-              onClick={() => router.back()}
-            >
-              <div sx={{ cursor: 'pointer' }}>
-                <ArrowBackIosOutlinedIcon />
-              </div>
-            </div>
-          </motion.div>
+          <BackButton />
         </>
       ) : (
         <>
@@ -87,10 +53,13 @@ function DashNav({ strawPage, articlePage }) {
             initial='hidden'
             animate='visible'
             whileHover={{
-              scale: 0.9,
+              scale: 0.95,
               transition: {
                 duration: 0.1,
               },
+            }}
+            whileTap={{
+              scale: 0.93,
             }}
             variants={{
               hidden: { scale: 0.8, opacity: 0 },
@@ -122,12 +91,12 @@ function DashNav({ strawPage, articlePage }) {
           initial='hidden'
           animate='visible'
           whileHover={{
-            scale: 0.9,
+            scale: 0.94,
             transition: {
               duration: 0.1,
             },
           }}
-          whileTap={{ scale: 0.8 }}
+          whileTap={{ scale: 0.9 }}
           variants={{
             hidden: { scale: 0.8, opacity: 0 },
             visible: {
@@ -154,12 +123,12 @@ function DashNav({ strawPage, articlePage }) {
         </motion.div>
         <motion.div
           whileHover={{
-            scale: 0.9,
+            scale: 0.94,
             transition: {
               duration: 0.3,
             },
           }}
-          whileTap={{ scale: 0.8 }}
+          whileTap={{ scale: 0.9 }}
           initial='hidden'
           animate='visible'
           variants={{
@@ -168,7 +137,7 @@ function DashNav({ strawPage, articlePage }) {
               scale: 1,
               opacity: 1,
               transition: {
-                delay: 0.3,
+                delay: 0.2,
               },
             },
           }}

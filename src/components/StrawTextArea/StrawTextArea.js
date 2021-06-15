@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { Input, Button, Heading, Divider } from '@theme-ui/components';
 import { useSelector } from 'react-redux';
 import strawApi from '../../apiServices/strawApi';
-
+import { motion } from 'framer-motion';
 function StrawTextArea() {
   // @ts-ignore
   const [chirp, setChirp] = useState('');
@@ -51,7 +51,6 @@ function StrawTextArea() {
           '::-webkit-scrollbar': { width: 0 },
         }}
       >
-        {/* Note */}
         {chirps ? (
           chirps.map((chirp, index) => <p key={index}>{chirp}</p>)
         ) : (
@@ -66,7 +65,7 @@ function StrawTextArea() {
         }}
         onSubmit={handleSubmit}
       >
-        <div sx={{ mr: 1, flex: 4 }}>
+        <div sx={{ mr: 2, flex: 4 }}>
           <Input
             type='text'
             name='chirp'
@@ -77,11 +76,22 @@ function StrawTextArea() {
             sx={{}}
           />
         </div>
+
         <Button
           sx={{ bg: 'black', height: '2.5rem', flex: 1, cursor: 'pointer' }}
           type='submit'
         >
-          Chirp
+          <motion.div
+            whileHover={{
+              scale: 0.94,
+              transition: {
+                duration: 0.1,
+              },
+            }}
+            whileTap={{ scale: 0.9 }}
+          >
+            <b>Chirp</b>
+          </motion.div>
         </Button>
       </form>
     </>

@@ -87,12 +87,12 @@ function NestList() {
           />
           <motion.div
             whileHover={{
-              scale: 0.9,
+              scale: 0.94,
               transition: {
-                duration: 0.3,
+                duration: 0.1,
               },
             }}
-            whileTap={{ scale: 0.8 }}
+            whileTap={{ scale: 0.9 }}
             initial='hidden'
             animate='visible'
             variants={{
@@ -101,7 +101,7 @@ function NestList() {
                 scale: 1,
                 opacity: 1,
                 transition: {
-                  delay: 0.3,
+                  delay: 0.1,
                 },
               },
             }}
@@ -157,13 +157,13 @@ function NestList() {
                 <motion.div
                   key={nest._id}
                   whileHover={{
-                    scale: 0.95,
+                    scale: 0.99,
                     transition: {
                       duration: 0.2,
                     },
                   }}
                   whileTap={{
-                    scale: 0.8,
+                    scale: 0.97,
                   }}
                 >
                   <div>
