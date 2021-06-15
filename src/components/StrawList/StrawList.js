@@ -61,7 +61,7 @@ function StrawList() {
           <>
             {straw._id ? (
               <div
-                key={straw._id}
+                key={straw._id + 'Heading'}
                 sx={{
                   display: 'flex',
                   justifyContent: 'space-between',
@@ -85,7 +85,7 @@ function StrawList() {
               </div>
             ) : null}
             <motion.div
-              key={straw._id}
+              key={straw._id + 'slMd'}
               whileHover={{
                 scale: 0.99,
                 transition: {
@@ -98,7 +98,7 @@ function StrawList() {
               sx={{ pointer: 'cursor' }}
               onClick={() => handleClick(straw)}
             >
-              <StrawCard straw={straw} />
+              <StrawCard key={straw._id + 'StrawCard'} straw={straw} />
             </motion.div>
           </>
         ))
