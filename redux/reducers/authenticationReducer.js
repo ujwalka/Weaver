@@ -1,4 +1,4 @@
-import { initialAuthState } from './initialState/initialAuthState';
+import { initialAuthState } from './initialState/initialAuthStateNew';
 
 const authenticationReducer = (state = initialAuthState, action) => {
   switch (action.type) {
