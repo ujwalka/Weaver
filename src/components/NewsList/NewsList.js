@@ -22,45 +22,44 @@ function NewsList({ news, SearchNews, onBranch }) {
       <div sx={{ display: 'flex', flexDirection: 'column' }}>
         {news.map((article) => (
           <>
-            <motion.div
-              key={article.url}
-              whileHover={{
-                scale: [1, 0.9, 0.9],
-                rotate: [0, 0.3, -0.3, 0],
-                transition: {
-                  duration: 0.2,
-                },
+            <Card
+              sx={{
+                borderRadius: '3',
+                padding: '.5rem',
+                borderColor: 'border',
+                boxShadow: '0 4px 4px -4px rgba(255,255,255,.1)',
+                display: 'flex',
+                flexDirection: 'column',
               }}
             >
-              <Card
-                sx={{
-                  borderRadius: '3',
-                  padding: '.5rem',
-                  borderColor: 'border',
-                  boxShadow: '0 4px 4px -4px rgba(255,255,255,.1)',
-                  display: 'flex',
-                  flexDirection: 'column',
+              {SearchNews && !onBranch ? (
+                <div
+                  sx={{
+                    mb: '.5rem',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                  }}
+                >
+                  <div sx={{ flex: 4 }}>
+                    <Heading sx={{}}> {article.title} </Heading>
+                  </div>
+                  <div sx={{ flex: 1 }}>
+                    <AddToNest article={article} />
+                  </div>
+                </div>
+              ) : (
+                <></>
+              )}
+              <motion.div
+                key={article.url}
+                whileHover={{
+                  scale: [1, 0.9, 0.9],
+                  rotate: [0, 0.3, -0.3, 0],
+                  transition: {
+                    duration: 0.2,
+                  },
                 }}
               >
-                {SearchNews && !onBranch ? (
-                  <div
-                    sx={{
-                      mb: '.5rem',
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                    }}
-                  >
-                    <div sx={{ flex: 4 }}>
-                      <Heading sx={{}}> {article.title} </Heading>
-                    </div>
-                    <div sx={{ flex: 1 }}>
-                      <AddToNest article={article} />
-                    </div>
-                  </div>
-                ) : (
-                  <></>
-                )}
-
                 <div
                   sx={{ pointer: 'cursor' }}
                   onClick={() => handleClick(article)}
@@ -72,8 +71,8 @@ function NewsList({ news, SearchNews, onBranch }) {
                     onBranch={onBranch}
                   />
                 </div>
-              </Card>
-            </motion.div>
+              </motion.div>
+            </Card>
           </>
         ))}
       </div>

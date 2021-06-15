@@ -157,10 +157,13 @@ function NestList() {
                 <motion.div
                   key={nest._id}
                   whileHover={{
-                    scale: 0.995,
+                    scale: 0.95,
                     transition: {
                       duration: 0.2,
                     },
+                  }}
+                  whileTap={{
+                    scale: 0.8,
                   }}
                 >
                   <div>
